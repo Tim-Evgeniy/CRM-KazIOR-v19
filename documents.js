@@ -6,14 +6,34 @@
   function key(){return crypto.randomUUID?.()||'doc-'+Array.from(crypto.getRandomValues(new Uint8Array(20)),x=>x.toString(16).padStart(2,'0')).join('')}
   function toast(text){$('#toast').textContent=text;$('#toast').hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('#toast').hidden=true,6500)}
   function showAuth(){$('#workspace').hidden=true;$('#authRequired').hidden=false;clearTimeout(pollTimer)}
+  const MAIN_KEY='its24_crm_kazior_v13',SESSION_KEY='its24_crm_session',DOC_KEY='kazior_github_demo_documents_v1';
+  const mainDb=()=>{try{return JSON.parse(localStorage.getItem(MAIN_KEY)||'{}')}catch{return {users:[],tickets:[]}}};
+  const mainUser=()=>{const db=mainDb(),id=sessionStorage.getItem(SESSION_KEY);return db.users?.find(u=>u.id===id)||null};
+  const loadDocs=()=>{try{return JSON.parse(localStorage.getItem(DOC_KEY)||'[]')}catch{return []}};
+  const saveDocs=docs=>localStorage.setItem(DOC_KEY,JSON.stringify(docs));
+  const stamp=()=>new Date().toLocaleString('ru-RU',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'});
   async function api(path,body){
-    const token=sessionStorage.getItem('kazior_v15_token')||'';
-    if(!token){showAuth();throw new Error('Войдите в CRM и откройте «Документы» из меню.')}
-    const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),28000);
-    try{
-      const r=await fetch(path,{method:body?'POST':'GET',headers:{Authorization:'Bearer '+token,...(body?{'Content-Type':'application/json'}:{})},body:body?JSON.stringify(body):undefined,signal:controller.signal});
-      const data=await r.json();if(!r.ok){if(r.status===401)showAuth();throw new Error(data.error||'Ошибка сервера')}return data;
-    }catch(e){if(e.name==='AbortError')throw new Error('Нет подтверждения от сервера. Повторите: сохранённое действие не продублируется.');throw e}finally{clearTimeout(timer)}
+    const db=mainDb(),user=mainUser();if(!user){showAuth();throw new Error('Войдите в CRM и откройте «Документы» из меню.')}
+    let docs=loadDocs();const people=(db.users||[]).filter(u=>u.status==='active').map(u=>({id:u.id,name:u.name,dept:u.dept,role:u.role}));
+    if(path==='/api/state')return {user,db};
+    if(path==='/api/documents'&&body===undefined)return {documents:docs,people,user,eds:{enabled:false,demo:true}};
+    if(path==='/api/attachments')return {id:'att-'+Date.now()+'-'+Math.random().toString(16).slice(2),name:body.name,type:body.type,data:body.data};
+    if(path==='/api/documents/create'){
+      if(docs.some(d=>d.key===body.key))return {document:docs.find(d=>d.key===body.key)};
+      const n=(Math.max(0,...docs.map(d=>Number(String(d.id).replace(/\D/g,''))||0))+1);const id='DOC-'+String(n).padStart(4,'0');
+      const d={id,key:body.key,_v:1,type:body.type||'Служебная записка',title:body.title,content:body.content,ticketId:body.ticketId||'',ownerId:user.id,ownerName:user.name,reviewers:body.reviewers||[user.id],signers:body.signers||[user.id],status:'draft',approvals:[],signatures:[],files:body.files||[],created:stamp(),updated:stamp(),history:[{date:stamp(),actor:user.name,text:'Документ создан · DEMO'}]};docs.unshift(d);saveDocs(docs);return {document:d};
+    }
+    if(path==='/api/documents/action'){
+      const d=docs.find(x=>x.id===body.id);if(!d)throw new Error('Документ не найден');
+      if(body.action==='edit'){d.title=body.title;d.content=body.content;d.history.push({date:stamp(),actor:user.name,text:'Документ отредактирован'})}
+      if(body.action==='submit'){d.status='review';d.history.push({date:stamp(),actor:user.name,text:'Отправлен на согласование'})}
+      if(body.action==='approve'){if(!d.approvals.some(a=>a.uid===user.id))d.approvals.push({uid:user.id,name:user.name,date:stamp()});d.status='signing';d.history.push({date:stamp(),actor:user.name,text:'Согласовано · DEMO'})}
+      if(body.action==='reject'){d.status='rejected';d.history.push({date:stamp(),actor:user.name,text:'Возвращён на доработку: '+(body.comment||'')})}
+      if(body.action==='test-sign'){if(!d.signatures.some(s=>s.uid===user.id))d.signatures.push({uid:user.id,name:user.name,date:stamp(),kind:'simulation',label:'Тестовая подпись'});d.status='signed';d.history.push({date:stamp(),actor:user.name,text:'Добавлена тестовая подпись'})}
+      if(body.action==='comment')d.history.push({date:stamp(),actor:user.name,text:'Комментарий: '+(body.comment||'')});
+      d._v=(d._v||0)+1;d.updated=stamp();saveDocs(docs);return {document:d};
+    }
+    return {ok:true};
   }
   function person(id){return state.people.find(p=>p.id===id)?.name||id}
   function pill(d){return `<span class="status-pill status-${esc(d.status)}">${esc(statuses[d.status])}</span>`}
@@ -41,7 +61,7 @@
     if(!actions)actions='<p>'+(d.status==='signed'?'Маршрут завершён. Скачайте документ и историю для просмотра.':'Ожидается действие назначенного участника.')+'</p>';
     $('#documentActions').innerHTML=actions;$('#documentActions').querySelectorAll('[data-action]').forEach(b=>b.onclick=()=>act(b.dataset.action));
     if($('#editDocBtn'))$('#editDocBtn').onclick=()=>form(d);
-    if($('#realSignBtn'))$('#realSignBtn').onclick=async()=>{if(busy)return;busy=true;try{const r=await window.KaziorEDS.perform(api,'document',{id:d.id});replace(r.document);toast('CMS проверен. Подпись сохранена в тестовом документе.')}catch(e){toast(e.message)}finally{busy=false}};
+    if($('#realSignBtn'))$('#realSignBtn').onclick=async()=>{toast('DEMO: реальный ключ ЭЦП не читается на GitHub Pages. Добавляем безопасную тестовую отметку.');await act('test-sign')};
     $('#documentParticipants').innerHTML='<h4>Участники</h4>'+[['Автор',d.ownerId],...d.reviewers.map(x=>['Согласует',x]),...d.signers.map(x=>['Подписывает',x])].map(([r,id])=>`<div class="participant"><i>${esc(person(id).slice(0,1))}</i><div>${esc(person(id))}<small>${r}${d.approvals.some(a=>a.uid===id)&&r==='Согласует'?' · согласовано':''}</small></div></div>`).join('');
     $('#documentSignatures').innerHTML=d.signatures.length?'<h4>Подписи</h4>'+d.signatures.map(s=>`<div class="signature ${s.kind==='simulation'?'simulation':''}"><b>${s.kind==='simulation'?'✓ Тестовая отметка':'✓ CMS проверен'}</b>${esc(s.name)}<br>${esc(s.date)}<br>${esc(s.label)}</div>`).join(''):'';
     $('#documentHistory').innerHTML=d.history.map(h=>`<div class="history-item"><div>${esc(h.text)}<p>${esc(h.date)} · ${esc(h.actor)}</p></div></div>`).join('');
@@ -86,12 +106,12 @@
     }catch(e){toast(e.message)}finally{busy=false}
   }
   function download(blob,name){const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000)}
-  async function downloadAttachment(f){try{const r=await fetch('/api/attachments/'+encodeURIComponent(f.id),{headers:{Authorization:'Bearer '+sessionStorage.getItem('kazior_v15_token')}});if(!r.ok)throw new Error('Нет доступа к вложению');download(await r.blob(),f.name)}catch(e){toast(e.message)}}
+  async function downloadAttachment(f){try{if(!f?.data)throw new Error('Вложение недоступно');const bin=atob(f.data),bytes=new Uint8Array(bin.length);for(let i=0;i<bin.length;i++)bytes[i]=bin.charCodeAt(i);download(new Blob([bytes],{type:f.type||'application/octet-stream'}),f.name)}catch(e){toast(e.message)}}
   async function refresh(){
     try{
       if(!busy){const next=await api('/api/documents'),old=state.documents.find(d=>d.id===selected);state=next;$('#connection').textContent='Сохранено · связь активна';renderList();const d=state.documents.find(d=>d.id===selected);if(selected&&(!old||old._v!==d?._v)&&!$('#documentModal').open)renderDetail()}
     }catch(e){$('#connection').textContent=e.message}
-    if(sessionStorage.getItem('kazior_v15_token'))pollTimer=setTimeout(refresh,3000);
+    if(sessionStorage.getItem(SESSION_KEY))pollTimer=setTimeout(refresh,5000);
   }
   async function init(){
     $('#documentForm').onsubmit=saveForm;$('#newDocBtn').onclick=()=>form();$('#examplesBtn').onclick=examples;$('#backToList').onclick=showList;

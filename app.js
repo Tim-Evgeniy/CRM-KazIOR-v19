@@ -37,8 +37,8 @@ const seed = {
       "id": "u1",
       "login": "superadmin",
       "name": "Тимченко Евгений Юрьевич",
-      "email": "evgeniy.tim.91@inbox.ru",
-      "phone": "+7 777 971 25 55",
+      "email": "demo@example.invalid",
+      "phone": "+7 700 000 00 01",
       "org": "КазНИИОиР",
       "dept": "Отдел Цифровизации",
       "deptId": "dept-digital",
@@ -46,7 +46,7 @@ const seed = {
       "role": "superadmin",
       "status": "active",
       "workStatus": "available",
-      "photo": "assets/team-evgeniy.jpg",
+      "photo": "",
       "about": "Системное администрирование, инфраструктура, сети и автоматизация.",
       "interests": [
         "сети",
@@ -60,9 +60,9 @@ const seed = {
     {
       "id": "u4",
       "login": "amuratova",
-      "name": "Муратова Алма Зульфухаровна",
+      "name": "Инженер Сети",
       "email": "amuratova@onco.local",
-      "phone": "+7 702 337 7873",
+      "phone": "+7 700 000 00 02",
       "org": "КазНИИОиР",
       "dept": "Отдел Цифровизации",
       "deptId": "dept-digital",
@@ -70,7 +70,7 @@ const seed = {
       "role": "engineer",
       "status": "active",
       "workStatus": "available",
-      "photo": "assets/team-alma.jpg",
+      "photo": "",
       "about": "",
       "interests": [
         "программирование",
@@ -82,9 +82,9 @@ const seed = {
     {
       "id": "u5",
       "login": "elnur",
-      "name": "Нұрқадыр Елнұр Серікұлы",
+      "name": "Инженер Программирования",
       "email": "elnur@onco.local",
-      "phone": "+7 777 491 0297",
+      "phone": "+7 700 000 00 03",
       "org": "КазНИИОиР",
       "dept": "Отдел Цифровизации",
       "deptId": "dept-digital",
@@ -92,7 +92,7 @@ const seed = {
       "role": "engineer",
       "status": "active",
       "workStatus": "available",
-      "photo": "assets/team-elnur.jpg",
+      "photo": "",
       "about": "",
       "interests": [
         "программирование"
@@ -103,9 +103,9 @@ const seed = {
     {
       "id": "u6",
       "login": "altair",
-      "name": "Мелис Альтаир Сержанович",
+      "name": "Инженер Поддержки",
       "email": "altair@onco.local",
-      "phone": "+7 707 969 1908",
+      "phone": "+7 700 000 00 04",
       "org": "КазНИИОиР",
       "dept": "Отдел Цифровизации",
       "deptId": "dept-digital",
@@ -113,7 +113,7 @@ const seed = {
       "role": "engineer",
       "status": "active",
       "workStatus": "available",
-      "photo": "assets/team-altair.jpg",
+      "photo": "",
       "about": "",
       "interests": [
         "веб",
@@ -125,9 +125,9 @@ const seed = {
     {
       "id": "u8",
       "login": "kuanysh",
-      "name": "Досов Қуаныш Рыспекұлы",
+      "name": "Инженер Резерв",
       "email": "kuanysh@onco.local",
-      "phone": "+7 708 202 1227",
+      "phone": "+7 700 000 00 06",
       "org": "КазНИИОиР",
       "dept": "Отдел Цифровизации",
       "deptId": "dept-digital",
@@ -135,7 +135,7 @@ const seed = {
       "role": "engineer",
       "status": "active",
       "workStatus": "available",
-      "photo": "assets/team-kuanysh.jpg",
+      "photo": "",
       "about": "",
       "interests": [
         "программирование",
@@ -205,6 +205,27 @@ const seed = {
   "theme": "light"
 };
 
+// Public GitHub Pages demo data. No production database, passwords, API keys or staff contacts are shipped.
+seed.users = [
+  {id:'u1',login:'demo-admin',password:'demo1234',name:'Демо Администратор',email:'admin@example.invalid',phone:'+7 700 000 00 01',org:'КазНИИОиР',dept:'Отдел Цифровизации',deptId:'dept-digital',position:'Системный администратор',role:'superadmin',status:'active',workStatus:'available',photo:'',about:'Демонстрационный профиль администратора.',interests:['сети','инфраструктура','AI'],theme:'light',registeredAt:'12.09.2026 09:00'},
+  {id:'u4',login:'demo-network',password:'demo1234',name:'Инженер Сети',email:'network@example.invalid',phone:'+7 700 000 00 02',org:'КазНИИОиР',dept:'Отдел Цифровизации',deptId:'dept-digital',position:'Сетевой инженер',role:'engineer',status:'active',workStatus:'available',photo:'',about:'Демонстрационный профиль.',interests:['сеть','Wi-Fi'],theme:'light',registeredAt:'12.09.2026 09:05'},
+  {id:'u5',login:'demo-software',password:'demo1234',name:'Инженер Программирования',email:'software@example.invalid',phone:'+7 700 000 00 03',org:'КазНИИОиР',dept:'Отдел Цифровизации',deptId:'dept-digital',position:'Инженер-программист',role:'engineer',status:'active',workStatus:'busy',photo:'',about:'Демонстрационный профиль.',interests:['ПО','МИС'],theme:'light',registeredAt:'12.09.2026 09:10'},
+  {id:'u6',login:'demo-support',password:'demo1234',name:'Инженер Поддержки',email:'support@example.invalid',phone:'+7 700 000 00 04',org:'КазНИИОиР',dept:'Отдел Цифровизации',deptId:'dept-digital',position:'Инженер технической поддержки',role:'engineer',status:'active',workStatus:'available',photo:'',about:'Демонстрационный профиль.',interests:['поддержка','оборудование'],theme:'light',registeredAt:'12.09.2026 09:15'},
+  {id:'u9',login:'demo-employee',password:'demo1234',name:'Иванова Анна Сергеевна',email:'employee@example.invalid',phone:'+7 700 000 00 05',org:'КазНИИОиР',dept:'Поликлиника',deptId:'dept-clinic',position:'Сотрудник',role:'employee',status:'active',workStatus:'available',photo:'',about:'Демонстрационный сотрудник.',interests:[],theme:'light',registeredAt:'12.09.2026 09:20'}
+];
+seed.users.forEach(u=>u.permissions={...permissionDefaults[u.role]});
+seed.lastNo=4;
+seed.tickets=[
+  {id:'KZ-000004',ownerId:'u9',ownerName:'Иванова Анна Сергеевна',org:'КазНИИОиР',dept:'Поликлиника',room:'315',location:'Корпус 2 / 3 этаж',phone:'+7 700 000 00 05',source:'Web',category:'Принтер',priority:'P2',subject:'Не печатает сетевой принтер',description:'Документ уходит в очередь, но печать не начинается.',status:'new',engineerId:'',engineerName:'Не назначен',created:'13.09.2026 08:40',slaDue:'2026-09-13T12:40',files:[],messages:[],history:[{date:'13.09.2026 08:40',actor:'Иванова Анна Сергеевна',text:'Заявка создана'}]},
+  {id:'KZ-000003',ownerId:'u9',ownerName:'Иванова Анна Сергеевна',org:'КазНИИОиР',dept:'Поликлиника',room:'212',location:'Корпус 3 / 2 этаж',phone:'+7 700 000 00 05',source:'Web',category:'Сеть',priority:'P2',subject:'Нет доступа к внутреннему ресурсу',description:'Интернет работает, внутренний ресурс не открывается.',status:'working',engineerId:'u4',engineerName:'Инженер Сети',created:'13.09.2026 08:10',acceptedAt:'13.09.2026 08:20',slaDue:'2026-09-13T12:10',files:[],messages:[{author:'Инженер Сети',authorId:'u4',text:'Заявка принята. Проверяю сетевой доступ.',date:'13.09.2026 08:22',files:[],readBy:['u4']}],history:[{date:'13.09.2026 08:10',actor:'Иванова Анна Сергеевна',text:'Заявка создана'},{date:'13.09.2026 08:20',actor:'Инженер Сети',text:'Заявка принята в работу'}]},
+  {id:'KZ-000002',ownerId:'u9',ownerName:'Иванова Анна Сергеевна',org:'КазНИИОиР',dept:'Поликлиника',room:'118',location:'Корпус 1',phone:'+7 700 000 00 05',source:'Web',category:'ПО / МИС',priority:'P3',subject:'Ошибка при запуске рабочей программы',description:'После обновления появляется сообщение об ошибке.',status:'waiting',engineerId:'u5',engineerName:'Инженер Программирования',created:'12.09.2026 16:30',slaDue:'2026-09-13T00:30',files:[],messages:[{author:'Инженер Программирования',authorId:'u5',text:'Нужен скриншот текста ошибки.',date:'12.09.2026 16:45',files:[],readBy:['u5','u9']}],history:[{date:'12.09.2026 16:30',actor:'Иванова Анна Сергеевна',text:'Заявка создана'}]},
+  {id:'KZ-000001',ownerId:'u9',ownerName:'Иванова Анна Сергеевна',org:'КазНИИОиР',dept:'Поликлиника',room:'101',location:'Корпус 1',phone:'+7 700 000 00 05',source:'Web',category:'Wi-Fi',priority:'P3',subject:'Слабый сигнал Wi-Fi',description:'В кабинете периодически пропадает соединение.',status:'done',engineerId:'u6',engineerName:'Инженер Поддержки',created:'12.09.2026 10:10',doneAt:'12.09.2026 11:05',slaDue:'2026-09-12T18:10',files:[],messages:[{author:'Инженер Поддержки',authorId:'u6',text:'Проверено. Подключение восстановлено.',date:'12.09.2026 11:05',files:[],readBy:['u6','u9']}],history:[{date:'12.09.2026 10:10',actor:'Иванова Анна Сергеевна',text:'Заявка создана'},{date:'12.09.2026 11:05',actor:'Инженер Поддержки',text:'Заявка выполнена'}]}
+];
+seed.tasks=[
+  {id:'task-demo-1',title:'Проверить точки Wi-Fi на 3 этаже',description:'Демонстрационная задача отдела.',status:'progress',due:'2026-09-14T15:00',creatorId:'u1',creator:'Демо Администратор',assigneeId:'u4',assignee:'Инженер Сети',readBy:['u1','u4']},
+  {id:'task-demo-2',title:'Проверить резервное копирование CRM',description:'Проверить наличие ежедневной копии.',status:'todo',due:'2026-09-15T10:00',creatorId:'u1',creator:'Демо Администратор',assigneeId:'u6',assignee:'Инженер Поддержки',readBy:['u1']}
+];
+
 let db = loadDb();
 let currentUser = null;
 const crmChannel=null;
@@ -260,7 +281,7 @@ function loadDb(){
   localStorage.setItem(KEY,JSON.stringify(fresh));
   return fresh;
 }
-function save(){localStorage.setItem(KEY,JSON.stringify(db));}
+function save(){localStorage.setItem(KEY,JSON.stringify(db));return true;}
 function toast(msg){const el=document.createElement("div");el.className="toast";el.textContent=msg;$("#toastHost").appendChild(el);setTimeout(()=>el.remove(),2600)}
 function userPermissions(u=currentUser){if(!u)return permissionDefaults.employee;return {...permissionDefaults[u.role],...(u.permissions||{})}}
 function hasPerm(name,u=currentUser){return !!(u&&(u.role==='superadmin'||userPermissions(u)[name]))}
@@ -1160,19 +1181,13 @@ function saveWaSettings(){
   toast("Настройки WhatsApp сохранены");
 }
 async function greenApiRequest(methodName,method="GET",body=null,suffix=""){
-  if(getWaSettings().receiveMode==='server')return bridgeRequest('/api/whatsapp/action', 'POST', {methodName,body});
-  const s=getWaSettings(),token=getWaToken();
-  if(!s.idInstance) throw new Error("Не указан ID Instance");
-  if(!token) throw new Error("Не указан API Token Instance");
-  const url=`${(s.apiUrl||"https://api.green-api.com").replace(/\/+$/,"")}/waInstance${encodeURIComponent(s.idInstance)}/${methodName}/${encodeURIComponent(token)}${suffix}`;
-  const opts={method,headers:{},signal:AbortSignal.timeout(20000)};
-  if(body!==null){opts.headers["Content-Type"]="application/json";opts.body=JSON.stringify(body)}
-  const res=await fetch(url,opts);
-  let data=null;
-  const text=await res.text();
-  try{data=text?JSON.parse(text):{}}catch(e){data={raw:text}}
-  if(!res.ok || data?.status==="error") throw new Error(`GREEN-API: HTTP ${res.status}${data?.code?" · "+String(data.code).slice(0,60):""}. Проверьте параметры подключения и режим приёма.`);
-  return data;
+  // GitHub Pages demo: never sends credentials or messages to a real provider.
+  await new Promise(r=>setTimeout(r,180));
+  if(methodName==='getStateInstance')return {stateInstance:'authorized'};
+  if(methodName==='sendMessage')return {idMessage:'DEMO-'+Date.now()};
+  if(methodName==='setSettings')return {saveSettings:true};
+  if(methodName==='receiveNotification')return null;
+  return {ok:true,demo:true};
 }
 async function checkWhatsAppConnection(){
   try{
@@ -1384,7 +1399,7 @@ function buildReportDocument(){
   return `<div class="report-doc-header"><img src="assets/kazior-logo.png" alt="КазНИИОиР"><div class="report-doc-title"><p>${esc(db.settings.organizationName)}</p><h2>Отчет по заявкам IT ServiceDesk</h2><p>Сформировано: ${esc(generated)} · Разработано IT-System-Solution</p></div></div>
     <div class="report-doc-metrics"><b>Всего:</b> ${all.length} &nbsp; <b>Открыто:</b> ${all.filter(t=>!['done','closed'].includes(t.status)).length} &nbsp; <b>Просрочено:</b> ${all.filter(isTicketOverdue).length} &nbsp; <b>Выполнено:</b> ${all.filter(t=>['done','closed'].includes(t.status)).length}</div>
     <table id="reportPreviewData"><thead><tr><th>№</th><th>Создано</th><th>Заявитель / телефон</th><th>Отдел / каб.</th><th>Тема</th><th>Приоритет</th><th>Статус</th><th>Инженер</th><th>SLA</th><th>Просрочка</th></tr></thead><tbody>${rows}</tbody></table>
-    <div class="report-copyright"><div><b>© ${new Date().getFullYear()} Тимченко Евгений Юрьевич</b><br>Разработано <b>IT-System-Solution</b><br>evgeniy.tim.91@inbox.ru · www.its24.kz · +7 777 971 25 55</div><img class="report-signature-small" src="assets/author-signature.png" alt="Подпись"></div>`;
+    <div class="report-copyright"><div><b>© ${new Date().getFullYear()} Тимченко Евгений Юрьевич</b><br>Разработано <b>IT-System-Solution</b><br>demo@example.invalid · www.its24.kz · +7 700 000 00 01</div><img class="report-signature-small" src="assets/author-signature.png" alt="Подпись"></div>`;
 }
 function openReportPreview(preferred='pdf'){
   $('#reportPreviewContent').innerHTML=buildReportDocument();
@@ -1466,14 +1481,10 @@ function renderIncomingSettings(){
   renderIncomingModeHelp();
 }
 async function bridgeRequest(path,method='GET',body=null){
-  const base=getWaSettings().bridgeUrl;
-  if(!base||!getBridgeKey())throw new Error('Укажите адрес приёмника и ключ доступа');
-  const url=new URL(base);
-  if(!['http:','https:'].includes(url.protocol)||url.username||url.password||url.search||url.hash)throw new Error('Укажите HTTP(S)-адрес приёмника без пароля и параметров');
-  const res=await fetch(base.replace(/\/+$/,'')+path,{method,cache:'no-store',headers:{Authorization:'Bearer '+getBridgeKey(),...(body?{'Content-Type':'application/json'}:{})},body:body?JSON.stringify(body):undefined,signal:AbortSignal.timeout(20000)});
-  let result;try{result=await res.json()}catch(e){throw new Error('По этому адресу нет приёмника WhatsApp. Запустите server/receiver.py')}
-  if(!res.ok)throw new Error(res.status===401?'Неверный ключ доступа к приёмнику':result.error||`Приёмник: HTTP ${res.status}`);
-  return result;
+  await new Promise(r=>setTimeout(r,120));
+  if(path.includes('health'))return {ok:true,demo:true};
+  if(path.includes('inbox'))return {items:[],cursor:0};
+  return {ok:true,demo:true,message:'DEMO: серверный мост не вызывается'};
 }
 function importWhatsAppItem(item,ticketId=''){
   if(!item||db.tickets.some(t=>t.waMessageKey===item.key))return null;
@@ -1682,292 +1693,43 @@ function init(){
   let deferredInstallPrompt=null;window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredInstallPrompt=e});const install=async()=>{if(deferredInstallPrompt){deferredInstallPrompt.prompt();await deferredInstallPrompt.userChoice;deferredInstallPrompt=null}else toast(location.protocol==='file:'?'Для установки PWA разместите CRM на HTTPS или localhost.':'Браузер пока не предлагает установку.')};$("#installPwaBtn").onclick=install;$("#settingsInstallPwaBtn").onclick=install;
   const tickClock=()=>{const el=$("#workspaceClock");if(el)el.textContent=new Date().toLocaleTimeString("ru-RU",{hour:"2-digit",minute:"2-digit"})};tickClock();setInterval(tickClock,30000);setInterval(()=>{if(currentUser){renderBadges();renderNotifications();renderAnalytics()}},60000);
   if('serviceWorker' in navigator && location.protocol!=='file:')navigator.serviceWorker.register('service-worker.js').catch(()=>{});
-  $('#authThemeBtn').onclick=()=>{try{localStorage.setItem('kazior_auth_theme',document.body.classList.contains('light')?'dark':'light')}catch{}applyAuthTheme()};showAuth();setupSharedUi();restoreSharedSession();
-}
-// Shared storage integration is assembled here.
-// v15 shared server adapter. The browser stores session/device tokens, never the CRM database.
-let sharedToken=sessionStorage.getItem('kazior_v15_token')||'';
-let sharedBase=null,sharedRevision=0,sharedFlight=null,sharedFailure=null,sharedDraft=null,sharedCreating=false;
-let sharedPollTimer=null,sharedWaLast=0,sharedWaInfo=null;
-function copy(value){return JSON.parse(JSON.stringify(value))}
-const sharedKinds=['users','departments','tickets','tasks','notifications','directChats'];
-function opId(){const a=new Uint32Array(4);crypto.getRandomValues(a);return 'op-'+Array.from(a,n=>n.toString(16).padStart(8,'0')).join('')}
-function loadDb(){const clean=copy(seed);clean.users=[];return clean}
-function techStaff(){return db.users.filter(u=>u.status==='active'&&['engineer','superadmin'].includes(u.role)).sort((a,b)=>a.name.localeCompare(b.name,'ru',{sensitivity:'base'}))}
-function renderLoginEmployees(){if($('#loginEmployees'))$('#loginEmployees').innerHTML=''}
-function addNotification(){} // Notifications are created only by committed server actions.
-function notifyNewTicketTeam(){}
-async function notifyNewTicketWhatsApp(){}
-async function notifyReplyWhatsApp(){}
-async function notifyStatusWhatsApp(){}
-function applyLocalLauncherSetup(){}
-function renderIncomingSettings(){}
-function renderIncomingModeHelp(){}
-function startWhatsAppReceiving(){return Promise.resolve()}
-function stopWhatsAppReceiving(){}
-function sharedStatus(text,error=false){
-  $('#sharedSyncText').textContent=text;$('#sharedSyncBar').classList.toggle('sync-error',error);
-  $('#sharedRetryBtn').classList.toggle('hidden',!sharedFailure);
-  $('#sharedDraftBtn').classList.toggle('hidden',!sharedDraft);
-}
-async function api(path,body){
-  if(location.protocol==='file:')throw new Error('Распакуйте архив и запустите START_CRM.bat. Открывать index.html отдельно не нужно.');
-  const ctrl=new AbortController(),timer=setTimeout(()=>ctrl.abort(),25000);
-  try{
-    const res=await fetch(path,{method:body===undefined?'GET':'POST',headers:{...(sharedToken?{Authorization:'Bearer '+sharedToken}:{}),...(body===undefined?{}:{'Content-Type':'application/json'})},body:body===undefined?undefined:JSON.stringify(body),signal:ctrl.signal,cache:'no-store'});
-    const obj=await res.json().catch(()=>({error:'Сервер CRM не найден. Запустите START_CRM.bat.'}));
-    if(!res.ok){const e=new Error(obj.error||'Ошибка сохранения');e.status=res.status;throw e}
-    return obj;
-  }catch(e){if(e.name==='AbortError')throw new Error('Сервер не ответил. Проверьте соединение; результат сохранения пока не подтверждён.');throw e}finally{clearTimeout(timer)}
-}
-function applyShared(result){
-  if(result.unchanged){sharedRevision=result.revision;return}
-  const fresh=result.db;
-  for(const kind of sharedKinds){
-    const old=new Map((db[kind]||[]).map(x=>[x.id,x]));
-    fresh[kind]=fresh[kind].map(row=>{const target=old.get(row.id);if(!target)return row;Object.keys(target).forEach(k=>delete target[k]);Object.assign(target,row);return target});
-  }
-  Object.assign(db,fresh);sharedRevision=result.revision;
-  if(result.user)currentUser=db.users.find(u=>u.id===result.user.id)||result.user;
-  sharedBase=copy(db);
-}
-function changes(from,to){
-  if(!from)return[];
-  const ops=[];
-  for(const kind of sharedKinds){
-    const before=new Map((from[kind]||[]).map(x=>[x.id,x]));
-    const after=new Map((to[kind]||[]).map(x=>[x.id,x]));
-    for(const [id,value] of after){
-      const prev=before.get(id);if(kind==='notifications'&&!prev)continue;
-      if(JSON.stringify(prev)!==JSON.stringify(value))ops.push({kind,id,version:prev?._v||0,value:copy(value)});
-    }
-    for(const [id,prev] of before){if(!after.has(id)&&kind==='tasks')ops.push({kind,id,version:prev._v,delete:true})}
-  }
-  if(JSON.stringify(from.settings)!==JSON.stringify(to.settings))ops.push({kind:'settings',id:'main',version:from.settings._v||0,value:{...copy(to.settings),id:'main'}});
-  return ops;
-}
-function preserveLaterEdits(sent,later){
-  for(const op of changes(sent,later)){
-    const old=op.kind==='settings'?sent.settings:sent[op.kind]?.find(x=>x.id===op.id);
-    const actual=op.kind==='settings'?db.settings:db[op.kind]?.find(x=>x.id===op.id);
-    if(op.delete){db[op.kind]=db[op.kind].filter(x=>x.id!==op.id);continue}
-    if(!actual){db[op.kind].push(op.value);continue}
-    for(const [key,value] of Object.entries(op.value)){
-      if(key==='_v'||JSON.stringify(value)===JSON.stringify(old?.[key]))continue;
-      if(key==='messages'&&old){
-        const base=old.messages||[],messages=actual.messages||[];
-        actual.messages=[...messages,...value.slice(base.length)];
-        value.slice(0,base.length).forEach((m,i)=>{if(messages[i]&&m.readBy?.includes(currentUser.id))messages[i].readBy=[...new Set([...(messages[i].readBy||[]),currentUser.id])]});
-      }else actual[key]=copy(value);
-    }
-  }
-}
-function save(){
-  if(!sharedToken||!sharedBase)return Promise.resolve(false);
-  if(sharedFailure){toast('Сначала устраните ошибку сохранения в верхней строке.');return Promise.resolve(false)}
-  if(sharedFlight)return sharedFlight.then(ok=>ok?save():false);
-  const ops=changes(sharedBase,db);if(!ops.length)return Promise.resolve(true);
-  const sent=copy(db),request={ops,key:opId()};
-  document.body.classList.add('shared-saving');sharedStatus('Сохраняем…');
-  sharedFlight=api('/api/patch',request).then(result=>{
-    const later=copy(db);applyShared(result);preserveLaterEdits(sent,later);
-    sharedStatus('Все изменения сохранены');return true;
-  }).catch(e=>{sharedFailure={path:'/api/patch',body:request,conflict:e.status===409};sharedDraft=sent;sharedStatus(e.message,true);toast(e.message);return false}).finally(()=>{sharedFlight=null;document.body.classList.remove('shared-saving')});
-  return sharedFlight;
-}
-async function submitLogin(e){
-  e.preventDefault();const btn=$('#loginForm button[type=submit]');if(btn.disabled)return;btn.disabled=true;
-  try{
-    const byName=!$('#loginFullName').disabled,name=$('#loginFullName').value.trim();
-    const devices=JSON.parse(localStorage.getItem('kazior_v15_devices')||'{}');
-    const key=name.normalize('NFKC').toLocaleLowerCase('ru').replace(/\s+/g,' ');
-    const result=await api(byName?'/api/auth/name':'/api/auth/password',byName?{name,device:devices[key]||''}:{login:$('#loginName').value.trim(),password:$('#loginPassword').value});
-    if(result.device){const identity=result.user.name.normalize('NFKC').trim().toLocaleLowerCase('ru').replace(/\s+/g,' ');devices[identity]=result.device;localStorage.setItem('kazior_v15_devices',JSON.stringify(devices))}
-    sharedToken=result.token;sessionStorage.setItem('kazior_v15_token',sharedToken);$('#loginPassword').value='';
-    applyShared(result);enterApp(currentUser);sharedStatus('Подключено · данные сохраняются на сервере');sharedRender();startSharedPolling();
-  }catch(err){toast(err.message)}finally{btn.disabled=false}
-}
-async function restoreSharedSession(){
-  if(!sharedToken)return;
-  try{const result=await api('/api/state');applyShared(result);enterApp(currentUser);sharedStatus('Все изменения сохранены');sharedRender();startSharedPolling()}
-  catch(e){if(e.status===401){sharedToken='';sessionStorage.removeItem('kazior_v15_token')}toast(e.message)}
-}
-function sharedRender(){
-  if(!currentUser)return;
-  renderBadges();renderNotifications();renderKanban();renderRecent();renderMetrics();
-  if($('#chatsView').classList.contains('active')){renderChats();renderActiveChat()}
-  if($('#tasksView').classList.contains('active')&&$('#taskModal').classList.contains('hidden'))renderTasks();
-  if($('#accountsView').classList.contains('active'))renderAccounts();
-  if($('#directoryView').classList.contains('active'))renderDirectory();
-  if($('#ticketEmployeeName'))$('#ticketEmployeeName').value=currentUser.name;
-  if($('#engineersView').classList.contains('active'))renderEngineers();
-  if($('#integrationsView').classList.contains('active'))renderIntegrations();
-  if(currentTicketId&&!$('#ticketModal').classList.contains('hidden')){
-    const ticket=db.tickets.find(t=>t.id===currentTicketId);
-    if(!ticket)closeModal('ticketModal');
-    else {
-      const messages=$('#ticketModalContent .messages');
-      if(messages){messages.innerHTML=(ticket.messages||[]).map(m=>`<div class="msg"><div class="msg-head"><b>${esc(m.author)}</b><span>${esc(m.date)}</span></div><div>${esc(m.text)}</div><div class="attachments attachment-grid">${attachmentMarkup(m.files||[])}</div></div>`).join('')||'<span class="muted">Сообщений пока нет.</span>';hydrateAttachments(messages)}
-      const history=$('#ticketModalContent .shared-history ol');
-      if(history)history.innerHTML=(ticket.history||[]).map(h=>`<li><b>${esc(h.actor)}</b> · ${esc(h.date)}<p>${esc(h.text)}</p></li>`).join('');
-    }
-  }
-  const selected=$('#sharedEngineerSelect').value;
-  $('#sharedEngineerSelect').innerHTML='<option value="">Любому свободному инженеру</option>'+techStaff().map(u=>`<option value="${esc(u.id)}">${esc(u.name)}</option>`).join('');
-  $('#sharedEngineerSelect').value=selected;
-}
-function startSharedPolling(){
-  clearTimeout(sharedPollTimer);
-  const tick=async()=>{
-    if(!sharedToken||!currentUser)return;
-    if(!sharedFlight&&!sharedFailure&&!sharedCreating){
-      try{
-        const known=new Set(db.notifications.map(n=>n.id));
-        const result=await api('/api/state?after='+sharedRevision);
-        if(!result.unchanged){
-          // Do not discard in-memory changes that have not yet been committed.
-          if(changes(sharedBase,db).length){await save()}else{
-            applyShared(result);sharedRender();
-            const added=db.notifications.filter(n=>!known.has(n.id)&&!n.read);
-            if(added.length){playNotificationSound();toast(added[0].title);showSystemNotification(added[0].title,added[0].text);if(navigator.vibrate)navigator.vibrate([80,45,80])}
-          }
-        }
-        if(!sharedFailure)sharedStatus('Все изменения сохранены · связь активна');
-      }catch(e){sharedStatus(e.message,true);if(e.status===401){sharedToken='';sessionStorage.removeItem('kazior_v15_token');currentUser=null;showAuth();toast('Сессия завершена. Войдите снова.');return}}
-    }
-    sharedPollTimer=setTimeout(tick,2000);
-  };sharedPollTimer=setTimeout(tick,1000);
-}
-async function storeSelectedFiles(list){
-  const out=[];for(const file of [...(list||[])]){
-    if(file.size>10*1024*1024)throw new Error('Максимум 10 МБ на файл');
-    const data=await new Promise((resolve,reject)=>{const r=new FileReader();r.onload=()=>resolve(String(r.result).split(',')[1]);r.onerror=reject;r.readAsDataURL(file)});
-    out.push(await api('/api/attachments',{name:file.name,type:file.type,data}));
-  }return out;
-}
-async function getStoredAttachment(id){
-  const response=await fetch('/api/attachments/'+encodeURIComponent(id),{headers:{Authorization:'Bearer '+sharedToken},cache:'no-store'});
-  if(!response.ok)throw new Error('Нет доступа к вложению');
-  const blob=await response.blob();
-  const all=[...db.tickets.flatMap(t=>[...(t.files||[]),...(t.messages||[]).flatMap(m=>m.files||[])]),...db.directChats.flatMap(c=>(c.messages||[]).flatMap(m=>m.files||[]))];
-  return {...all.find(f=>f.id===id),blob,type:blob.type};
-}
-async function createSharedTicket(e){
-  e.preventDefault();if(sharedCreating||sharedFlight||sharedFailure)return;
-  sharedCreating=true;const btn=e.target.querySelector('[type=submit]');btn.disabled=true;
-  try{
-    if(!/^\+?[\d\s()-]{8,22}$/.test($('#ticketPhone').value.trim()))throw new Error('Укажите телефон для связи');
-    const files=await storeSelectedFiles($('#ticketFiles').files);
-    const ticket={subject:$('#ticketSubject').value.trim(),description:$('#ticketDescription').value.trim(),dept:$('#ticketDept').value.trim(),room:$('#ticketRoom').value.trim(),location:$('#ticketLocation').value.trim(),phone:$('#ticketPhone').value.trim(),category:$('#ticketCategory').value,priority:$('#ticketPriority').value,engineerId:$('#sharedEngineerSelect').value,files};
-    const body={key:e.target.dataset.requestKey||opId(),ticket};e.target.dataset.requestKey=body.key;
-    sharedStatus('Отправляем заявку…');const result=await api('/api/tickets',body);
-    applyShared(result);e.target.reset();delete e.target.dataset.requestKey;
-    $('#ticketFilesInfo').textContent='Файлы не выбраны';$('#ticketFilesPreview').innerHTML='';
-    renderAll();sharedRender();setView('tickets');sharedStatus('Заявка '+result.ticket.id+' сохранена');toast('Заявка '+result.ticket.id+' отправлена инженеру');
-    openTicket(result.ticket.id);
-  }catch(err){sharedStatus(err.message,true);toast(err.message)}finally{sharedCreating=false;btn.disabled=false}
-}
-function downloadBlob(blob,name){const a=document.createElement('a'),url=URL.createObjectURL(blob);a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000)}
-async function exportDatabase(){
-  if(currentUser?.role!=='superadmin')return;
-  try{
-    sharedStatus('Готовим резервную копию…');
-    const res=await fetch('/api/backup',{method:'POST',headers:{Authorization:'Bearer '+sharedToken,'Content-Type':'application/json'},body:'{}'});
-    if(!res.ok){const e=await res.json();throw new Error(e.error||'Ошибка копии')}
-    downloadBlob(await res.blob(),'KazIOR-backup-'+new Date().toISOString().slice(0,10)+'.sqlite3');sharedStatus('Резервная копия сохранена');
-  }catch(e){sharedStatus(e.message,true);toast(e.message)}
-}
-function openTicket(id){
-  legacyOpenTicket(id);
-  const t=db.tickets.find(t=>t.id===id);if(!t)return;
-  const docsButton=document.createElement('button');docsButton.type='button';docsButton.className='btn soft';docsButton.textContent='▤ Согласовать как документ · тест';docsButton.onclick=()=>window.open('/documents.html?ticket='+encodeURIComponent(t.id),'kazior-documents');$('#ticketModalContent').appendChild(docsButton);
-  const box=document.createElement('div');box.className='ticket-block shared-history';
-  box.innerHTML=`<div class="panel-head"><h4>История заявки</h4><button class="btn soft" id="sharedSaveTicket">Сохранить заявку файлом</button></div><ol>${(t.history||[]).map(h=>`<li><b>${esc(h.actor)}</b> · ${esc(h.date)}<p>${esc(h.text)}</p></li>`).join('')}</ol>`;
-  $('#ticketModalContent').appendChild(box);
-  $('#sharedSaveTicket').onclick=()=>downloadBlob(new Blob([JSON.stringify(t,null,2)],{type:'application/json'}),t.id+'.json');
-  if(currentUser.role==='employee'){
-    $('#ticketModalContent').querySelectorAll('h4').forEach(h=>{if(h.textContent==='Ответить сотруднику')h.textContent='Написать инженеру'});
-    $('#replyAiBtn')?.classList.remove('hidden');
-  }
-  const action=async fn=>{if(sharedFlight||sharedFailure)return;fn();if(await save()){renderAll();sharedRender();openTicket(id)}};
-  const replace=(selector,callback)=>{const el=$(selector);if(!el)return;const clone=el.cloneNode(true);el.replaceWith(clone);clone.onclick=callback};
-  replace('#replySendBtn',async()=>{
-    if(sharedFlight||sharedFailure)return;const button=$('#replySendBtn');button.disabled=true;
-    try{const text=$('#replyText').value.trim(),files=await storeSelectedFiles($('#replyFiles').files);if(!text&&!files.length)return toast('Напишите сообщение или добавьте файл');
-      t.messages.push({author:currentUser.name,authorId:currentUser.id,text,date:now(),files,readBy:[currentUser.id]});
-      if(await save()){openTicket(id);sharedRender();toast('Ответ сохранён');}
-    }catch(e){toast(e.message)}finally{button.disabled=false}
-  });
-  replace('#takeBtn',()=>action(()=>{t.engineerId=currentUser.id;t.engineerName=currentUser.name;t.status='working';t.acceptedAt=now()}));
-  replace('#statusBtn',()=>action(()=>{t.status=$('#modalStatus').value;if(['done','closed'].includes(t.status))t.doneAt=now()}));
-  replace('#assignBtn',()=>action(()=>{t.engineerId=$('#assignEngineer').value;t.engineerName=db.users.find(u=>u.id===t.engineerId)?.name||'Не назначен'}));
-  replace('#saveSlaBtn',()=>action(()=>{t.slaDue=$('#ticketSlaDue').value}));
-}
-async function sendChatMessage(){
-  if(chatSending||sharedFlight||sharedFailure)return;
-  const direct=activeDirectChatId,ticketId=activeChatTicketId;
-  if(!direct&&!ticketId)return toast('Выберите инженера или заявку');
-  chatSending=true;
-  try{
-    const text=$('#chatText').value.trim(),files=await storeSelectedFiles($('#chatFiles').files);
-    if(!text&&!files.length)return;
-    const target=direct?db.directChats.find(c=>c.id===direct):db.tickets.find(t=>t.id===ticketId);
-    if(!target)return;
-    target.messages=target.messages||[];target.messages.push({authorId:currentUser.id,author:currentUser.name,text,files,date:now(),readBy:[currentUser.id]});
-    if(await save()){$('#chatText').value='';$('#chatFiles').value='';$('#chatPendingPreview').innerHTML='';renderAll();sharedRender();if(direct)selectDirectChat(direct,false);else selectChat(ticketId);toast('Сообщение сохранено')}
-  }catch(e){toast(e.message)}finally{chatSending=false;autoGrowChatComposer()}
-}
-const waStatusNames={pending:'В очереди',sending:'Отправляем',submitted:'Принято сервисом',sent:'Отправлено',delivered:'Доставлено',read:'Прочитано',uncertain:'Нужна проверка',failed:'Не доставлено'};
-function renderIntegrations(){
-  if(!$('#sharedWaPanel')||currentUser?.role!=='superadmin')return;
-  if(Date.now()-sharedWaLast>5000){sharedWaLast=Date.now();api('/api/whatsapp/status').then(data=>{sharedWaInfo=data;renderIntegrations()}).catch(e=>{$('#sharedWaPanel').textContent=e.message})}
-  const data=sharedWaInfo;if(!data){$('#sharedWaPanel').textContent='Проверяем каналы WhatsApp…';return}
-  $('#sharedWaPanel').innerHTML=`<h3>WhatsApp · инженеры</h3><p>Входящая заявка назначается инженеру, которому написал врач.</p><div class="wa-rules"><b>Новая:</b> Заявка: не работает принтер, кабинет 315<br><b>Ответ:</b> KZ-000001 ошибка осталась<br>Можно ответить цитатой на сообщение по заявке. Личные сообщения без команды пропускаются.</div><div class="table-wrap"><table><thead><tr><th>Инженер</th><th>Номер</th><th>Подключение</th></tr></thead><tbody>${data.channels.map(c=>`<tr><td>${esc(db.users.find(u=>u.id===c.engineerId)?.name||c.engineerId)}</td><td>${esc(c.phone)}</td><td><span class="tag ${c.ok?'ok':'warn'}">${esc(c.message)}</span></td></tr>`).join('')}</tbody></table></div><p>Настройте общий номер или личные каналы в форме ниже. Сохраните настройки в форме ниже: канал применится автоматически. Получение и отправка работают, пока запущен сервер.</p><button id="sharedWaRefresh" class="btn soft">Обновить состояние</button><h3>Отправка уведомлений</h3><p>Приём сервисом ещё не означает доставку. Статус обновляется по подтверждениям WhatsApp.</p><div class="table-wrap"><table><thead><tr><th>Заявка</th><th>Получатель</th><th>Состояние</th><th>Действие</th></tr></thead><tbody>${data.recent.map(r=>`<tr><td>${esc(r.ticket_id||'Чат')}</td><td>${esc(r.chat.split('@')[0])}</td><td>${esc(waStatusNames[r.state]||r.state)}${r.error?`<small class="wa-error">${esc(r.error)}</small>`:''}</td><td>${['uncertain','failed'].includes(r.state)?`<button class="btn soft" data-wa-retry="${esc(r.id)}">Повторить</button>`:''}</td></tr>`).join('')||'<tr><td colspan="4">Уведомлений пока нет</td></tr>'}</tbody></table></div>`;
-  $('#sharedWaRefresh').onclick=()=>{sharedWaLast=0;renderIntegrations()};
-  $$('[data-wa-retry]').forEach(btn=>btn.onclick=async()=>{if(!confirm('Проверьте чат WhatsApp: сообщение могло уже прийти. Отправить повторно?'))return;await api('/api/whatsapp/retry',{id:btn.dataset.waRetry,confirmed:true});sharedWaLast=0;renderIntegrations()});
-}
-function setupSharedUi(){
-  $('#createTicketForm').onsubmit=createSharedTicket;
-  $('#registerForm').onsubmit=e=>e.preventDefault();
-  $('#logoutBtn').onclick=async()=>{
-    if(sharedFlight)await sharedFlight;
-    if(sharedFailure&&!confirm('Есть несохранённые изменения. Выйти?'))return;
-    try{await api('/api/auth/logout',{})}catch(e){}
-    sharedToken='';sharedBase=null;sharedFailure=null;sharedDraft=null;sharedWaInfo=null;sharedWaLast=0;
-    sessionStorage.removeItem('kazior_v15_token');sessionStorage.removeItem(SESSION);clearTimeout(sharedPollTimer);
-    db=loadDb();currentUser=null;showAuth();location.hash='';
-  };
-  $('#sharedRetryBtn').onclick=async()=>{
-    if(!sharedFailure)return;
-    try{
-      const failure=sharedFailure;
-      const result=failure.conflict?await api('/api/state'):await api(failure.path,failure.body);
-      sharedFailure=null;sharedDraft=null;applyShared(result);sharedRender();sharedStatus(failure.conflict?'Данные обновлены. Повторите своё изменение.':'Изменения сохранены');
-      if(currentTicketId&&!$('#ticketModal').classList.contains('hidden'))openTicket(currentTicketId);
-    }catch(e){sharedStatus(e.message,true)}
-  };
-  $('#sharedDraftBtn').onclick=()=>downloadBlob(new Blob([JSON.stringify(sharedDraft,null,2)],{type:'application/json'}),'KazIOR-unsaved-draft.json');
-  $('#sharedLinkBtn').onclick=async()=>{
-    try{const r=await api('/api/whatsapp/link',{});$('#sharedLinkResult').innerHTML=`<p>Отправьте со своего WhatsApp: <b class="link-code">CRM ${esc(r.code)}</b><br>Код действует 10 минут и привязывает номер к вашему кабинету.</p><div class="link-engineers">${techStaff().map(u=>`<a class="btn soft" target="_blank" rel="noopener" href="https://wa.me/${u.phone.replace(/\D/g,'')}?text=${encodeURIComponent('CRM '+r.code)}">${esc(u.name)}</a>`).join('')}</div>`}catch(e){toast(e.message)}
-  };
-  $('#exportDbBtn').textContent='Скачать полную резервную копию';$('#exportDbBtn').onclick=exportDatabase;
-  for(const id of ['importDbBtn','clearWorkDbBtn','resetDemoBtn'])$('#'+id).classList.add('hidden');
-  $('#importDbInput').onchange=null;
-  const note=document.createElement('p');note.className='hint';note.textContent='База и вложения хранятся в data/crm.sqlite3 на компьютере с сервером. Автокопии — в data/backups. Для восстановления используйте RESTORE_BACKUP.bat при остановленном сервере.';$('#exportDbBtn').parentElement.after(note);
-  document.addEventListener('click',e=>{if(sharedFlight&&e.target.closest('button')){e.preventDefault();e.stopImmediatePropagation()}},true);
-  window.addEventListener('beforeunload',e=>{if(sharedFlight||sharedFailure){e.preventDefault();e.returnValue=''}});
-  $('#heroTitle').textContent='Единая CRM для заявок, врачей и обратной связи с инженерами';
+  $('#authThemeBtn').onclick=()=>{try{localStorage.setItem('kazior_auth_theme',document.body.classList.contains('light')?'dark':'light')}catch{}applyAuthTheme()};showAuth();const demoBar=$('#sharedSyncText');if(demoBar)demoBar.textContent='DEMO GitHub Pages · данные хранятся только в этом браузере';const sid=sessionStorage.getItem(SESSION);const saved=db.users.find(u=>u.id===sid&&u.status==='active');if(saved)enterApp(saved);
 }
 
+// GitHub Pages compatibility API used by v16-v19 UI modules.
+async function demoApi(path,body){
+  await new Promise(r=>setTimeout(r,90));
+  if(path==='/api/ai/draft'){
+    const text=String(body?.draft||body?.subject||'');const result=classify(text);
+    if(body?.mode==='consult')return {label:'Локальный демо-помощник',text:`${result.tip}\n\n1. Зафиксируйте точный симптом.\n2. Выполните только безопасную перезагрузку проблемной программы/устройства.\n3. Если не помогло — создайте заявку и приложите текст ошибки.\n\nЧто изменилось после проверки?`};
+    return {label:'Локальный демо-помощник',text:body?.mode==='create'?`Проблема: ${body?.subject||'не указана'}.\nМесто: ${body?.location||body?.room||'уточнить'}.\nЧто уже проверено: базовая диагностика выполнена.\nРекомендация: ${result.tip}`:`Здравствуйте. Заявка принята в работу. ${result.tip} Сообщим результат после проверки.`};
+  }
+  if(path==='/api/integrations/status')return {restartRequired:false,telegram:{message:'Демо-режим · реальный бот не подключён',linked:0,recent:[]},ai:{enabled:true,model:'Локальный demo'},eds:{enabled:false,provider:'ncanode',verifierUrl:''}};
+  if(path==='/api/integrations/configure')return {ok:true,restartRequired:false,demo:true};
+  if(path==='/api/whatsapp/status')return {channels:techStaff().map(u=>({id:u.login,engineerId:u.id,phone:u.phone,idInstance:'DEMO',apiUrl:'',hasToken:false,enabled:true,routing:'engineer',defaultEngineerId:u.id,incomingMode:'commands',ok:true,message:'Демо'})),notifications:{notify_new:true,notify_reply:true,notify_status:true},recent:[]};
+  if(path==='/api/whatsapp/check')return {enabled:true,checks:[{ok:true,name:'Демо-канал создан'},{ok:true,name:'Внешняя отправка отключена'}]};
+  if(path==='/api/whatsapp/apply')return {ok:true,message:'Демо-настройки применены локально. Реальные сообщения не отправляются.'};
+  if(path==='/api/whatsapp/test')return {ok:true,message:'Демо: тест показан в интерфейсе, реальное сообщение не отправлялось.'};
+  if(path==='/api/telegram/link')return {url:'#',code:'DEMO-2026'};
+  if(path==='/api/telegram/unlink'||path==='/api/telegram/retry'||path==='/api/oauth/unlink')return {ok:true};
+  if(path==='/api/oauth/providers')return {links:[],publicOrigin:location.origin+location.pathname.replace(/[^/]*$/,''),providers:['google','yandex','mailru','microsoft'].map(id=>({id,ready:false,redirectUri:(location.origin+location.pathname.replace(/[^/]*$/,''))+'index.html?oauth=complete&provider='+id,clientId:''}))};
+  if(path==='/api/eds/challenge')return {id:'demo-challenge',challenge:'DEMO',purpose:body?.purpose||'login'};
+  if(path==='/api/eds/complete')return {demoUserId:'u9',user:db.users.find(u=>u.id==='u9')};
+  return {ok:true,demo:true,message:'Демо-операция выполнена локально.'};
+}
+function demoLogin(kind='employee'){
+  const id=kind==='admin'?'u1':kind==='engineer'?'u4':'u9';const user=db.users.find(u=>u.id===id);if(user){enterApp(user);toast('Демо-вход: '+user.name)}
+}
 window.KaziorCRM={
-  api,
-  people:()=>[...db.users].sort((a,b)=>a.name.localeCompare(b.name,'ru')).map(u=>({id:u.id,name:u.name,role:u.role,phone:u.phone,login:u.login})),
+  api:demoApi,
+  people:()=>[...db.users].sort((a,b)=>a.name.localeCompare(b.name,'ru')).map(u=>({id:u.id,name:u.name,role:u.role,phone:u.phone,login:u.login,dept:u.dept})),
   setView,
   currentUser:()=>currentUser?{id:currentUser.id,name:currentUser.name,role:currentUser.role,phone:currentUser.phone}:null,
   aiContext:()=>({ticketId:!$('#ticketModal').classList.contains('hidden')?currentTicketId:activeChatTicketId,chatId:activeDirectChatId}),
-  acceptLogin:result=>{sharedToken=result.token;sessionStorage.setItem('kazior_v15_token',sharedToken);applyShared(result);enterApp(currentUser);sharedRender();startSharedPolling()},
+  acceptLogin:result=>{const user=db.users.find(u=>u.id===(result?.demoUserId||result?.user?.id))||db.users.find(u=>u.id==='u9');enterApp(user);toast('Демо-вход с ЭЦП выполнен без реальной подписи.')},
+  demoLogin,
   toast,
-  openDocuments:()=>{window.open('/documents.html','kazior-documents')}
+  openDocuments:()=>{window.open('documents.html','kazior-documents')}
 };
-document.addEventListener("DOMContentLoaded",init);
+document.addEventListener('DOMContentLoaded',init);
 })();

@@ -1,11 +1,11 @@
 {
-  "name": "КазНИИОиР — заявки и помощь инженеров",
-  "short_name": "КазIOR CRM",
+  "name": "КазНИИОиР CRM — GitHub DEMO",
+  "short_name": "KazIOR DEMO",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#07111d",
   "theme_color": "#20369d",
-  "description": "Service Desk CRM v13: чаты с фиксированным редактором, редактируемые задачи, управление подразделениями, права доступа, SLA и PWA",
+  "description": "Статическая демонстрационная версия Service Desk CRM для GitHub Pages. Данные сохраняются только в браузере.",
   "icons": [
     {
       "src": "assets/kazior-app-icon-192.png",

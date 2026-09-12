@@ -41,7 +41,7 @@
             <button class="auth-tab" data-auth="register">Регистрация</button>
           </div>
           <form id="loginForm" class="auth-form">
-            <div class="auth-form-title"><h2>Добро пожаловать</h2><p>Напишите своё ФИО и нажмите «Войти». Пароль не нужен.</p></div>
+            <div class="auth-form-title"><h2>Добро пожаловать</h2><p>GitHub Pages DEMO. Данные сохраняются только в этом браузере.</p></div><div id="githubDemoQuick" class="demo-quick-login" aria-label="Быстрый демо-вход"><b>Быстрый демо-вход:</b><button type="button" class="btn soft" data-demo-login="admin">Администратор</button><button type="button" class="btn soft" data-demo-login="engineer">Инженер</button><button type="button" class="btn soft" data-demo-login="employee">Сотрудник</button></div>
             <div class="login-methods" role="group" aria-label="Способ входа">
               <button type="button" class="btn primary" id="loginByNameBtn" aria-pressed="true">Я сотрудник</button>
               <button type="button" class="btn soft" id="loginByPasswordBtn" aria-pressed="false">Я инженер</button>
@@ -50,7 +50,7 @@
               <input id="loginFullName" autocomplete="name" maxlength="160" required placeholder="Например: Иванова Анна Сергеевна">
               <datalist id="loginEmployees"></datalist>
             </label>
-            <label id="loginNameLabel" class="hidden">ФИО или логин инженера<input id="loginName" autocomplete="username" disabled placeholder="Например: Баракбаева Айжан Айтулгановна"></label>
+            <label id="loginNameLabel" class="hidden">ФИО или логин инженера<input id="loginName" autocomplete="username" disabled placeholder="Например: demo-admin"></label>
             <label id="loginPasswordLabel" class="hidden">Пароль<input id="loginPassword" type="password" autocomplete="current-password" disabled placeholder="••••••••"></label>
             <button class="btn primary wide auth-login-btn" type="submit">Войти</button>
             <button id="edsLoginBtn" class="btn soft wide" type="button">Войти с ЭЦП</button><p id="edsLoginStatus" class="login-note" role="status"></p><p class="login-note">При первом входе кабинет создаётся автоматически. Вы видите только свои заявки и ответы инженеров.</p><div class="social-title">Корпоративный вход</div>
@@ -124,7 +124,7 @@
       </nav>
 
       <div class="side-footer">
-        <div class="system-state"><i></i><span>Локальная CRM активна</span></div>
+        <div class="system-state"><i></i><span>GitHub DEMO активна</span></div>
       </div>
     </aside>
 
@@ -481,10 +481,10 @@
                 </div>
               </label>
               <label>Номер для уведомлений CRM
-                <input id="waNotifyNumber" value="+7 777 971 25 55" placeholder="+7 777 000 00 00">
+                <input id="waNotifyNumber" value="+7 700 000 00 01" placeholder="+7 777 000 00 00">
               </label>
               <label>Тестовый номер
-                <input id="waTestNumber" value="+7 777 971 25 55" placeholder="+7 777 000 00 00">
+                <input id="waTestNumber" value="+7 700 000 00 01" placeholder="+7 777 000 00 00">
               </label>
             </div>
 
@@ -691,7 +691,7 @@
           </div>
           <div id="reportTable" class="table-wrap report-table-watermarked"></div>
           <div class="report-screen-copyright">
-            <div><b>© <span class="currentYear"></span> Тимченко Евгений Юрьевич</b><br>Разработано <b>IT-System-Solution</b> · evgeniy.tim.91@inbox.ru · www.its24.kz</div>
+            <div><b>© <span class="currentYear"></span> Тимченко Евгений Юрьевич</b><br>Разработано <b>IT-System-Solution</b> · www.its24.kz</div>
             <img src="assets/author-signature.png" alt="Подпись автора">
           </div>
         </div>
@@ -804,9 +804,9 @@
       <footer class="footer">
         <div>
           © <span class="currentYear"></span> <strong>Тимченко Евгений Юрьевич</strong>
-          · <a href="mailto:evgeniy.tim.91@inbox.ru">evgeniy.tim.91@inbox.ru</a>
+         
           · <a href="https://www.its24.kz" target="_blank" rel="noopener">www.its24.kz</a>
-          · <a href="tel:+77779712555">+7 777 971 25 55</a>
+         
           · <a href="https://wa.me/77779712555" target="_blank" rel="noopener">WhatsApp</a>
         </div>
       </footer>
@@ -933,6 +933,7 @@
     </div>
   </div>
 
+  <script>window.KAZIOR_GITHUB_DEMO=true;</script>
   <script src="whatsapp-core.js"></script>
   <script src="app.js"></script>
 <script src="ncalayer.js"></script>
@@ -940,5 +941,6 @@
 <script src="v17-ui.js"></script>
 <script src="v18-ui.js"></script>
 <script src="v19-ui.js"></script>
+<script src="demo-overrides.js"></script>
 </body>
 </html>

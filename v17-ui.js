@@ -4,6 +4,7 @@
  const providers={google:'Google / Gmail',yandex:'Яндекс',mailru:'Mail.ru',microsoft:'Microsoft Outlook / 365'};
  const social={'Google':'google','Яндекс':'yandex','Mail.ru':'mailru','Microsoft':'microsoft'};
  async function oauth(provider,purpose='login') {
+  if(window.KAZIOR_GITHUB_DEMO){if(purpose==='login')crm.demoLogin('employee');else crm.toast('DEMO: привязка '+providers[provider]+' показана без внешнего OAuth.');return;}
   try {
    const nonce=Array.from(crypto.getRandomValues(new Uint8Array(24)),x=>x.toString(16).padStart(2,'0')).join('');
    sessionStorage.setItem('kazior_oauth_nonce',nonce);
@@ -27,7 +28,7 @@
   };
   button.focus();
  }
- function openMail(){window.open('/mail.html','kazior-mail')}
+ function openMail(){window.open('mail.html','kazior-mail')}
  document.addEventListener('click',e=>{
   const b=e.target.closest?.('[data-social],[data-oauth-link],#edsLoginBtn,#edsBindBtn,[data-view="mailbox"],#mailNavBtn,#openMailV17');if(!b)return;
   e.preventDefault();e.stopImmediatePropagation();
@@ -79,8 +80,8 @@
  }
  document.addEventListener('DOMContentLoaded',async()=>{
   if(new URLSearchParams(location.search).get('oauth')==='complete'){
-   history.replaceState(null,'','/');const nonce=sessionStorage.getItem('kazior_oauth_nonce')||'';
-   try {const r=await crm.api('/api/oauth/finish',{nonce});sessionStorage.removeItem('kazior_oauth_nonce');if(r.error)throw new Error(r.error);if(r.purpose==='login')crm.acceptLogin(r);else if(r.purpose==='mail'){crm.toast('Почта подключена.');location.assign('/mail.html')}else crm.toast('Аккаунт привязан к вашему кабинету.')}
+   history.replaceState(null,'',location.pathname);const nonce=sessionStorage.getItem('kazior_oauth_nonce')||'';
+   try {const r=await crm.api('/api/oauth/finish',{nonce});sessionStorage.removeItem('kazior_oauth_nonce');if(r.error)throw new Error(r.error);if(r.purpose==='login')crm.acceptLogin(r);else if(r.purpose==='mail'){crm.toast('Почта подключена.');location.assign('mail.html')}else crm.toast('Аккаунт привязан к вашему кабинету.')}
    catch(e){$('#edsLoginStatus').textContent=e.message;crm.toast(e.message)}
   }
   setInterval(panels,1500);

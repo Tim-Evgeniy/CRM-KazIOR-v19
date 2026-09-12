@@ -17,3 +17,7 @@ body.light #authScreen .auth-form-title p,body.light #authScreen .login-note,bod
 body.light #authScreen #edsLoginBtn{background:#e9f4fa;border-color:#bed6e4;color:#172c3d}
 body.light #authScreen .social-btn{background:#e9f4fa;color:#172c3d;border-color:#bed6e4}
 .wa-diagnostics{border-top:1px solid var(--line);margin-top:20px;padding-top:16px}.wa-diagnostics input[type=checkbox]{width:auto}.wa-diagnostics [data-diagnostic]{white-space:pre-line;padding:12px;background:#eaf4ff;color:#183e59;border-radius:10px}.status-choices{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:18px 0}
+
+/* GitHub Pages demo */
+.demo-quick-login{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:12px 0;padding:10px 12px;border:1px dashed var(--line);border-radius:14px;background:color-mix(in srgb,var(--panel) 88%,transparent)}
+.demo-quick-login b{width:100%;font-size:12px;opacity:.8}.github-demo-ribbon{position:fixed;right:12px;bottom:12px;z-index:10000;padding:8px 12px;border-radius:999px;background:#111827;color:white;font-size:11px;box-shadow:0 8px 28px #0004}
