@@ -1,0 +1,112 @@
+{
+  "listen_host": "127.0.0.1",
+  "listen_port": 8000,
+  "data_dir": "data",
+  "backup_dir": "data/backups",
+  "backup_keep": 14,
+  "backup_interval_seconds": 86400,
+  "allowed_hosts": [],
+  "channels": [
+    {
+      "id": "superadmin",
+      "engineer_id": "u1",
+      "phone": "+7 777 971 25 55",
+      "enabled": false,
+      "api_url": "https://api.green-api.com",
+      "id_instance": "",
+      "api_token": ""
+    },
+    {
+      "id": "amuratova",
+      "engineer_id": "u4",
+      "phone": "+7 702 337 7873",
+      "enabled": false,
+      "api_url": "https://api.green-api.com",
+      "id_instance": "",
+      "api_token": ""
+    },
+    {
+      "id": "elnur",
+      "engineer_id": "u5",
+      "phone": "+7 777 491 0297",
+      "enabled": false,
+      "api_url": "https://api.green-api.com",
+      "id_instance": "",
+      "api_token": ""
+    },
+    {
+      "id": "altair",
+      "engineer_id": "u6",
+      "phone": "+7 707 969 1908",
+      "enabled": false,
+      "api_url": "https://api.green-api.com",
+      "id_instance": "",
+      "api_token": ""
+    },
+    {
+      "id": "kuanysh",
+      "engineer_id": "u8",
+      "phone": "+7 708 202 1227",
+      "enabled": false,
+      "api_url": "https://api.green-api.com",
+      "id_instance": "",
+      "api_token": ""
+    },
+    {
+      "id": "abarakbaeva",
+      "engineer_id": "u3",
+      "phone": "+7 707 906 0984",
+      "enabled": false,
+      "api_url": "https://api.green-api.com",
+      "id_instance": "",
+      "api_token": ""
+    },
+    {
+      "id": "zhainar",
+      "engineer_id": "u-zhainar",
+      "phone": "",
+      "enabled": false,
+      "api_url": "https://api.green-api.com",
+      "id_instance": "",
+      "api_token": ""
+    }
+  ],
+  "telegram": {
+    "enabled": false,
+    "bot_token": ""
+  },
+  "ai": {
+    "enabled": false,
+    "api_key": "",
+    "model": "gpt-4.1-mini"
+  },
+  "eds": {
+    "verifier_url": "http://127.0.0.1:14579",
+    "verifier_token": "",
+    "enabled": false,
+    "provider": "ncanode"
+  },
+  "oauth": {
+    "public_origin": "http://localhost:8000",
+    "google": {
+      "enabled": false,
+      "client_id": "",
+      "client_secret": ""
+    },
+    "yandex": {
+      "enabled": false,
+      "client_id": "",
+      "client_secret": ""
+    },
+    "mailru": {
+      "enabled": false,
+      "client_id": "",
+      "client_secret": ""
+    },
+    "microsoft": {
+      "enabled": false,
+      "client_id": "",
+      "client_secret": ""
+    }
+  }
+}

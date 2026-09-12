@@ -1,0 +1,22 @@
+[Unit]
+Description=KazIOR CRM v15
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=kazior
+Group=kazior
+WorkingDirectory=/opt/kazior-crm
+ExecStart=/usr/bin/python3 /opt/kazior-crm/server/crm_server.py --host 127.0.0.1 --no-browser
+Restart=on-failure
+RestartSec=5
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/kazior-crm/data
+
+[Install]
+WantedBy=multi-user.target

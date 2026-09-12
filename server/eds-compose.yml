@@ -1,0 +1,10 @@
+services:
+  ncanode:
+    image: malikzh/ncanode:latest
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:14579:14579"
+    volumes:
+      - ncanode_cache:/app/cache
+volumes:
+  ncanode_cache:

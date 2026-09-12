@@ -1,0 +1,240 @@
+{
+  "settings": {
+    "organizationName": "АО “Казахский научно-исследовательский институт онкологии и радиологии”",
+    "organizationShort": "КазНИИОиР",
+    "departmentName": "Отдел Цифровизации",
+    "soundEnabled": true,
+    "slaCheckMinutes": 1,
+    "loginHeroImage": "assets/kazior-logo.png",
+    "loginLogoSize": 320,
+    "loginLogoHeight": 240,
+    "loginLogoOffsetY": 0,
+    "loginLeftWidth": 58
+  },
+  "users": [
+    {
+      "id": "u1",
+      "login": "superadmin",
+      "name": "Тимченко Евгений Юрьевич",
+      "email": "evgeniy.tim.91@inbox.ru",
+      "phone": "+7 777 971 25 55",
+      "org": "КазНИИОиР",
+      "dept": "Отдел Цифровизации",
+      "deptId": "dept-digital",
+      "position": "Системный администратор",
+      "role": "superadmin",
+      "status": "active",
+      "workStatus": "available",
+      "photo": "assets/team-evgeniy.jpg",
+      "about": "Системное администрирование, инфраструктура, сети и автоматизация.",
+      "interests": [
+        "сети",
+        "инфраструктура",
+        "автоматизация",
+        "AI"
+      ],
+      "theme": "light",
+      "registeredAt": "01.09.2026 08:30",
+      "education": "2007–2011 гг. Алматинский технический колледж. Специальность: Автоматизированные системы обработки информации и управления.",
+      "degree": ""
+    },
+    {
+      "id": "u4",
+      "login": "amuratova",
+      "name": "Муратова Алма Зульфухаровна",
+      "email": "amuratova@onco.local",
+      "phone": "+7 702 337 7873",
+      "org": "КазНИИОиР",
+      "dept": "Отдел Цифровизации",
+      "deptId": "dept-digital",
+      "position": "Инженер-программист",
+      "role": "engineer",
+      "status": "active",
+      "workStatus": "available",
+      "photo": "assets/team-alma.jpg",
+      "about": "",
+      "interests": [
+        "программирование",
+        "поддержка"
+      ],
+      "theme": "light",
+      "registeredAt": "01.09.2026 09:05",
+      "education": "1985–1990 гг. Карагандинский государственный университет им. Е.А. Букетова. Специальность: Физика.",
+      "degree": "Кандидат биологических наук"
+    },
+    {
+      "id": "u5",
+      "login": "elnur",
+      "name": "Нұрқадыр Елнұр Серікұлы",
+      "email": "elnur@onco.local",
+      "phone": "+7 777 491 0297",
+      "org": "КазНИИОиР",
+      "dept": "Отдел Цифровизации",
+      "deptId": "dept-digital",
+      "position": "Инженер-программист",
+      "role": "engineer",
+      "status": "active",
+      "workStatus": "available",
+      "photo": "assets/team-elnur.jpg",
+      "about": "",
+      "interests": [
+        "программирование"
+      ],
+      "theme": "light",
+      "registeredAt": "01.09.2026 09:10",
+      "education": "2021–2025 гг. Казахский Национальный университет им. аль-Фараби. Специальность: Компьютерная физика.",
+      "degree": ""
+    },
+    {
+      "id": "u6",
+      "login": "altair",
+      "name": "Мелис Альтаир Сержанович",
+      "email": "altair@onco.local",
+      "phone": "+7 707 969 1908",
+      "org": "КазНИИОиР",
+      "dept": "Отдел Цифровизации",
+      "deptId": "dept-digital",
+      "position": "Инженер-программист",
+      "role": "engineer",
+      "status": "active",
+      "workStatus": "available",
+      "photo": "assets/team-altair.jpg",
+      "about": "",
+      "interests": [
+        "веб",
+        "автоматизация"
+      ],
+      "theme": "light",
+      "registeredAt": "01.09.2026 09:15",
+      "education": "2017–2021 гг. Центральноазиатский технико-экономический колледж. Специальность: Техник-программист.",
+      "degree": ""
+    },
+    {
+      "id": "u8",
+      "login": "kuanysh",
+      "name": "Досов Қуаныш Рыспекұлы",
+      "email": "kuanysh@onco.local",
+      "phone": "+7 708 202 1227",
+      "org": "КазНИИОиР",
+      "dept": "Отдел Цифровизации",
+      "deptId": "dept-digital",
+      "position": "Инженер-программист",
+      "role": "engineer",
+      "status": "active",
+      "workStatus": "available",
+      "photo": "assets/team-kuanysh.jpg",
+      "about": "",
+      "interests": [
+        "программирование",
+        "инфраструктура"
+      ],
+      "theme": "light",
+      "registeredAt": "01.09.2026 09:25",
+      "education": "2009–2013 гг. Алматинский гуманитарно-технический университет. Специальность: Вычислительная техника и программное обеспечение.",
+      "degree": ""
+    },
+    {
+      "id": "u3",
+      "login": "abarakbaeva",
+      "name": "Баракбаева Айжан Айтулгановна",
+      "email": "",
+      "phone": "+7 707 906 0984",
+      "org": "КазНИИОиР",
+      "dept": "Отдел Цифровизации",
+      "deptId": "dept-digital",
+      "position": "Инженер-программист",
+      "role": "engineer",
+      "status": "active",
+      "workStatus": "available",
+      "photo": "assets/team-aizhan.jpg",
+      "about": "",
+      "interests": [
+        "программирование",
+        "поддержка"
+      ],
+      "theme": "light",
+      "registeredAt": "01.09.2026 09:05",
+      "education": "2010–2014 гг. Казахская инженерная, Финансово-банковская академия (КИФБА). Специальность: Автоматизация и управление.",
+      "degree": ""
+    },
+    {
+      "id": "u-zhainar",
+      "login": "zhainar",
+      "name": "Жангербаева Жайнар Ельшатовна",
+      "email": "",
+      "phone": "",
+      "org": "КазНИИОиР",
+      "dept": "Отдел Цифровизации",
+      "deptId": "dept-digital",
+      "position": "Инженер-программист",
+      "role": "engineer",
+      "status": "active",
+      "workStatus": "available",
+      "photo": "https://onco.kz/digital/img/Jainar(1x1).webp",
+      "about": "",
+      "interests": [],
+      "theme": "light",
+      "registeredAt": "01.09.2026 09:05",
+      "education": "2005–2009 гг. Жетысуский государственный университет им. И. Жансугурова. Специальность: Информационные системы.",
+      "degree": ""
+    }
+  ],
+  "departments": [
+    {
+      "id": "dept-digital",
+      "name": "Отдел Цифровизации",
+      "headId": "u1"
+    },
+    {
+      "id": "dept-clinic",
+      "name": "Поликлиника",
+      "headId": ""
+    },
+    {
+      "id": "dept-admin",
+      "name": "Административный корпус",
+      "headId": ""
+    },
+    {
+      "id": "dept-lab",
+      "name": "Лаборатория",
+      "headId": ""
+    }
+  ],
+  "tickets": [],
+  "lastNo": 0,
+  "tasks": [],
+  "notifications": [],
+  "directChats": [],
+  "chatAccessAudit": [],
+  "mailMessages": [],
+  "integrations": {
+    "whatsapp": {
+      "incomingEnabled": false,
+      "receiveMode": "shared",
+      "notifyNew": true,
+      "notifyReply": true,
+      "notifyStatus": true
+    },
+    "mail": {
+      "google": {
+        "email": "",
+        "clientId": ""
+      },
+      "yandex": {
+        "email": "",
+        "clientId": ""
+      },
+      "mailru": {
+        "email": "",
+        "clientId": ""
+      },
+      "outlook": {
+        "email": "",
+        "clientId": ""
+      }
+    },
+    "log": []
+  },
+  "theme": "light"
+}
