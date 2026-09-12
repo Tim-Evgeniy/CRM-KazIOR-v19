@@ -1,0 +1,11 @@
+data/
+server/config.local.json
+__pycache__/
+*.pyc
+.sites-runtime/
+*.sqlite3
+*.sqlite3-wal
+*.sqlite3-shm
+
+server/whatsapp.supplied.json
+server/config.local.json.tmp-*

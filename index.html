@@ -1,0 +1,944 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#081525">
+  <title>КазНИИОиР · Заявки и помощь инженеров</title>
+  <link rel="icon" type="image/png" href="assets/kazior-favicon.png">
+  <link rel="apple-touch-icon" href="assets/kazior-app-icon-192.png">
+  <link rel="manifest" href="manifest.json"><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="shared.css">
+</head>
+<body>
+  <div id="toastHost" class="toast-host"></div>
+
+  <section id="authScreen" class="auth-screen kazior-auth">
+    <button id="authThemeBtn" type="button" class="btn soft auth-theme-toggle" aria-label="Переключить тему">☀ Светлая тема</button>
+    <div class="auth-developer-mark">
+      <img src="assets/logo.jpeg" alt="IT-System-Solution">
+      <div><strong>IT-System-Solution</strong><span>Разработка · CRM · Service Desk</span></div>
+    </div>
+    <div class="auth-split">
+      <div class="auth-hero-panel">
+        <div class="auth-hero-content">
+          <div class="auth-tenant-brand">
+            <img id="authHeroImage" src="assets/kazior-logo.png" alt="Казахский научно-исследовательский институт онкологии и радиологии">
+          </div>
+          <div class="auth-kicker"><span class="eyebrow">ОТДЕЛ ЦИФРОВИЗАЦИИ</span><div class="tenant-label" id="authTenantShort">КазНИИОиР</div></div>
+          <h1>Помощь врачам<br>и сотрудникам</h1>
+          <p id="authTenantName">АО “Казахский научно-исследовательский институт онкологии и радиологии”</p>
+          <div class="auth-feature-grid">
+            <span>1. Напишите, что случилось</span><span>2. Укажите кабинет</span><span>3. Получите ответ инженера</span>
+          </div>
+        </div>
+        <div class="auth-orbit orbit-a"></div><div class="auth-orbit orbit-b"></div>
+      </div>
+      <div class="auth-form-panel">
+        <div class="auth-card auth-card-v7">
+          <div class="auth-org-mobile"><b id="authTenantMobile">КазНИИОиР</b><span>CRM · Service Desk</span></div>
+          <div class="auth-tabs hidden">
+            <button class="auth-tab active" data-auth="login">Вход</button>
+            <button class="auth-tab" data-auth="register">Регистрация</button>
+          </div>
+          <form id="loginForm" class="auth-form">
+            <div class="auth-form-title"><h2>Добро пожаловать</h2><p>Напишите своё ФИО и нажмите «Войти». Пароль не нужен.</p></div>
+            <div class="login-methods" role="group" aria-label="Способ входа">
+              <button type="button" class="btn primary" id="loginByNameBtn" aria-pressed="true">Я сотрудник</button>
+              <button type="button" class="btn soft" id="loginByPasswordBtn" aria-pressed="false">Я инженер</button>
+            </div>
+            <label id="loginFullNameLabel">ФИО сотрудника
+              <input id="loginFullName" autocomplete="name" maxlength="160" required placeholder="Например: Иванова Анна Сергеевна">
+              <datalist id="loginEmployees"></datalist>
+            </label>
+            <label id="loginNameLabel" class="hidden">ФИО или логин инженера<input id="loginName" autocomplete="username" disabled placeholder="Например: Баракбаева Айжан Айтулгановна"></label>
+            <label id="loginPasswordLabel" class="hidden">Пароль<input id="loginPassword" type="password" autocomplete="current-password" disabled placeholder="••••••••"></label>
+            <button class="btn primary wide auth-login-btn" type="submit">Войти</button>
+            <button id="edsLoginBtn" class="btn soft wide" type="button">Войти с ЭЦП</button><p id="edsLoginStatus" class="login-note" role="status"></p><p class="login-note">При первом входе кабинет создаётся автоматически. Вы видите только свои заявки и ответы инженеров.</p><div class="social-title">Корпоративный вход</div>
+            <div class="social-grid social-grid-four"><button class="social-btn" type="button" data-social="Google">G Google</button><button class="social-btn" type="button" data-social="Яндекс">Я Яндекс</button><button class="social-btn" type="button" data-social="Mail.ru">@ Mail.ru</button><button class="social-btn" type="button" data-social="Microsoft">⊞ Microsoft</button></div>
+          </form>
+          <form id="registerForm" class="auth-form hidden">
+            <div class="auth-form-title"><h2>Регистрация сотрудника</h2><p>После регистрации учетную запись подтверждает администратор.</p></div>
+            <div class="form-grid two">
+              <label>ФИО<input id="regFullName" required placeholder="Иванов Иван"></label>
+              <label>Подразделение<input id="regDept" placeholder="Поликлиника / отдел"></label>
+              <label>Телефон<input id="regPhone" placeholder="+7 777 000 00 00"></label>
+              <label>E-mail<input id="regEmail" type="email" required placeholder="user@onco.kz"></label>
+              <label>Логин<input id="regLogin" required placeholder="ivanov"></label>
+              <label>Пароль<input id="regPassword" type="password" minlength="6" required></label>
+              <input id="regOrg" type="hidden" value="КазНИИОиР">
+            </div>
+            <button class="btn primary wide" type="submit">Зарегистрироваться</button>
+            <p class="hint">Роль по умолчанию: <b>Сотрудник организации</b>. Доступ к чужим заявкам отсутствует.</p>
+          </form>
+          <div class="copyright auth-copy">© <span class="currentYear"></span> <b>Тимченко Евгений Юрьевич</b><br>Разработано <b>IT-System-Solution</b> · <a href="https://www.its24.kz" target="_blank" rel="noopener">www.its24.kz</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="app" class="app hidden"><div id="sharedSyncBar" class="shared-sync" role="status"><span id="sharedSyncText">Подключаемся…</span><button id="sharedRetryBtn" type="button" class="hidden">Повторить</button><button id="sharedDraftBtn" type="button" class="hidden">Сохранить черновик</button></div>
+    <div id="notificationPanel" class="notification-panel hidden"><div class="notification-panel-head"><b>Уведомления</b><button id="markAllReadBtn" class="mini-btn">Прочитать все</button></div><div id="notificationList"></div></div>
+    <aside id="sidebar" class="sidebar">
+      <div class="brand sidebar-brand">
+        <img src="assets/logo.jpeg" alt="" onerror="this.style.display='none'">
+        <div class="brand-copy">
+          <div class="brand-name">IT-System-Solution</div>
+          <div class="brand-sub"><span id="sideTenantShort">КазНИИОиР</span> · Service CRM</div>
+        </div>
+        <button id="collapseBtn" class="collapse-btn" title="Свернуть меню">‹</button>
+      </div>
+
+      <button id="profileQuickBtn" class="user-mini user-mini-btn" type="button">
+        <div class="avatar" id="sideAvatar">ET</div>
+        <div class="grow">
+          <strong id="sideUserName">Пользователь</strong>
+          <span id="sideUserRole">Роль</span>
+        </div>
+      </button>
+
+      <nav id="nav" class="nav">
+        <div class="nav-section-label">Рабочее пространство</div>
+        <button class="nav-btn active" data-view="dashboard"><b>⌂</b> <span>Обзор</span></button>
+        <button class="nav-btn" data-view="profile"><b>◉</b> <span>Мой профиль</span></button>
+        <button class="nav-btn" data-view="chats"><b>◫</b> <span>Чаты</span><em id="sideChatBadge">2</em></button>
+        <button class="nav-btn" data-view="tasks"><b>✓</b> <span>Задачи</span><em id="sideTaskBadge" class="hidden">!</em></button>
+
+        <div class="nav-section-label">CRM / Service Desk</div>
+        <button class="nav-btn" data-view="tickets"><b>▦</b> <span>Заявки</span><em id="sideTicketBadge">1</em></button>
+        <button class="nav-btn" data-view="create"><b>＋</b> <span>Создать заявку</span></button>
+        <button class="nav-btn admin-only" data-view="contactcenter"><b>⌁</b> <span>Контакт-центр</span></button>
+        <button class="nav-btn admin-only" data-view="integrations"><b>↗</b> <span>Интеграции</span><em id="integrationBadge" class="hidden">!</em></button>
+        <button class="nav-btn" id="mailNavBtn" type="button"><b>✉</b> <span>Почта</span></button>
+        <button class="nav-btn" data-view="assistant"><b>✦</b> <span>AI ассистент</span></button>
+
+        <div class="nav-section-label">Справочник / управление</div>
+        <button class="nav-btn admin-only" data-view="accounts"><b>◎</b> <span>Учетные записи</span></button>
+        <button class="nav-btn" id="documentsNavBtn"><b>▤</b> <span>Документы <small>Тест</small></span></button>
+        <button class="nav-btn" data-view="directory"><b>☷</b> <span>Списки / сотрудники</span></button>
+        <button class="nav-btn admin-only" data-view="engineers"><b>◇</b> <span>Инженеры</span></button>
+        <button class="nav-btn" data-view="departments"><b>▤</b> <span>Подразделения</span></button>
+        <button class="nav-btn admin-only" data-view="analytics"><b>◕</b> <span>Аналитика</span></button>
+        <button class="nav-btn admin-only" data-view="reports"><b>◔</b> <span>Отчеты</span></button>
+        <button class="nav-btn super-only" data-view="security"><b>⚿</b> <span>Безопасность</span></button>
+        <button class="nav-btn super-only" data-view="settings"><b>⚙</b> <span>Настройки</span></button>
+      </nav>
+
+      <div class="side-footer">
+        <div class="system-state"><i></i><span>Локальная CRM активна</span></div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <div class="workspacebar">
+        <div class="workspace-tabs">
+          <button class="workspace-tab active" data-workspace-view="dashboard">Главная</button>
+          <button class="workspace-tab" data-workspace-view="tickets">CRM</button>
+          <button class="workspace-tab" data-workspace-view="chats">Чаты</button>
+          <button class="workspace-tab" data-workspace-view="tasks">Задачи</button>
+          <button class="workspace-tab" data-workspace-view="directory">Справочник / управление</button>
+          <button class="workspace-tab admin-only" data-workspace-view="analytics">Аналитика</button>
+          <button class="workspace-tab admin-only" data-workspace-view="contactcenter">Контакт-центр</button>
+          <button class="workspace-tab admin-only" data-workspace-view="integrations">Почта / WhatsApp</button>
+          <button class="workspace-tab" data-workspace-view="assistant">AI</button>
+        </div>
+        <div class="workspace-actions">
+          <button id="notificationBtn" class="workspace-icon" title="Уведомления">🔔<span id="notificationBadge">1</span></button><button id="userStatusBtn" class="workspace-status" title="Статус"><i id="workspaceStatusDot"></i><span id="workspaceStatusText">Доступен</span></button>
+          <span id="workspaceClock" class="workspace-clock">--:--</span>
+        </div>
+      </div>
+
+      <header class="topbar">
+        <div class="top-left">
+          <button id="menuBtn" class="icon-btn mobile-menu">☰</button>
+          <div>
+            <h1 id="pageTitle">Обзор</h1>
+            <p id="pageSub">Сводка по заявкам и работе службы поддержки</p>
+          </div>
+        </div>
+        <div class="top-actions">
+          <input id="globalSearch" class="search" type="search" name="crm_query" readonly aria-label="Поиск заявок" autocomplete="off" autocapitalize="off" spellcheck="false" data-lpignore="true" data-1p-ignore="true" placeholder="Поиск по CRM…">
+          <button id="quickTopCreate" class="btn primary compact">+ Создать</button>
+          <button id="themeBtn" class="icon-btn" title="Сменить тему">☾</button><button id="installPwaBtn" class="icon-btn" title="Установить приложение">⇩</button>
+          <button id="logoutBtn" class="btn ghost">Выйти</button>
+        </div>
+      </header>
+
+      <section id="dashboardView" class="view active">
+        <div class="hero">
+          <div class="hero-copy">
+            <span class="eyebrow" id="heroEyebrow">SERVICE DESK · IT-SYSTEM-SOLUTION</span>
+            <h2 id="heroTitle">Единая CRM для заявок, врачей и обратной связи с инженерами</h2>
+            <p id="heroText">Создание, принятие в работу, перенаправление, ответы, вложения, уведомления и контроль статусов.</p>
+          </div>
+          <div class="hero-actions">
+            <button class="btn primary" data-jump="create">+ Создать заявку</button>
+            <button class="btn soft admin-only" data-jump="tickets">Открыть Kanban</button>
+          </div>
+        </div>
+
+        <div id="metricGrid" class="metric-grid"></div>
+
+        <div class="dash-grid">
+          <div class="panel">
+            <div class="panel-head">
+              <div><h3>Последние заявки</h3><p>Актуальные обращения</p></div>
+              <button class="link-btn" data-jump="tickets">Все заявки →</button>
+            </div>
+            <div id="recentList"></div>
+          </div>
+          <div class="panel" id="engineerLoadPanel">
+            <div class="panel-head"><div><h3>Загрузка инженеров</h3><p>Текущие заявки в работе</p></div></div>
+            <div id="loadList"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="ticketsView" class="view">
+        <div class="toolbar">
+          <div class="filter-row">
+            <select id="statusFilter">
+              <option value="">Все статусы</option>
+              <option value="new">Новая</option>
+              <option value="working">В работе</option>
+              <option value="waiting">Ожидание</option>
+              <option value="done">Выполнено</option>
+              <option value="closed">Закрыта</option>
+            </select>
+            <select id="priorityFilter">
+              <option value="">Все приоритеты</option>
+              <option value="P1">P1 — Критический</option>
+              <option value="P2">P2 — Высокий</option>
+              <option value="P3">P3 — Средний</option>
+              <option value="P4">P4 — Низкий</option>
+            </select>
+            <select id="engineerFilter" class="admin-only"></select>
+          </div>
+          <span id="ticketCounter" class="muted"></span>
+        </div>
+        <div id="kanban" class="kanban"></div>
+      </section>
+
+      <section id="createView" class="view">
+        <div class="create-layout">
+          <form id="createTicketForm" class="panel form-panel"><label class="employee-identity">Сотрудник KazIOR<input id="ticketEmployeeName" readonly aria-label="ФИО заявителя"><small>Ваше имя будет видно инженеру.</small></label>
+            <div class="panel-head"><div><h3>Что у вас случилось?</h3><p>Опишите проблему и укажите, где вас найти.</p></div></div>
+
+            <div class="form-grid two">
+              <label class="full">Что не работает? *
+                <div class="voice-field">
+                  <input id="ticketSubject" required placeholder="Например: не печатает принтер">
+                  <button class="voice-btn" type="button" data-voice-target="ticketSubject" aria-label="Заполнить поле голосом" title="Заполнить голосом">🎙</button>
+                </div>
+              </label>
+              <label class="full staff-detail hidden">ФИО заявителя
+                <input id="ticketRequesterName" placeholder="Если не заполнить — подставится ФИО из учетной записи">
+                <small class="field-help">При создании заявки поле автоматически заполняется из вашей учетной записи.</small>
+              </label>
+              <label class="ticket-category">Категория
+                <select id="ticketCategory"></select>
+              </label>
+              <label class="staff-detail">Приоритет
+                <select id="ticketPriority">
+                  <option value="P4">Низкий</option>
+                  <option value="P3" selected>Средний</option>
+                  <option value="P2">Высокий</option>
+                  <option value="P1">Критический</option>
+                </select>
+              </label>
+              <label>Ваше отделение
+                <input id="ticketDept" placeholder="Например: Поликлиника">
+              </label>
+              <label>Кабинет
+                <input id="ticketRoom" placeholder="Например: 315">
+              </label>
+              <label class="full">Корпус / локация
+                <input id="ticketLocation" placeholder="Например: Корпус B / 3 этаж">
+              </label>
+              <div class="full form-actions ai-create-actions"><button id="aiSelfHelpBtn" type="button" class="btn primary">✦ AI помощник · попробовать решить до заявки</button><button id="createAiBtn" type="button" class="btn soft">✦ AI · помочь описать проблему</button></div><label class="full">Подробности, если нужны
+                <div class="voice-field voice-field-textarea">
+                  <textarea id="ticketDescription" rows="6" placeholder="Что не работает? Где? Когда началось? Какая ошибка?"></textarea>
+                  <button class="voice-btn" type="button" data-voice-target="ticketDescription" aria-label="Заполнить поле голосом" title="Продиктовать описание">🎙</button>
+                </div>
+              </label>
+              <label>Телефон для связи *
+                <input id="ticketPhone" type="tel" autocomplete="tel" required placeholder="+7 777 000 00 00"><small>Обязательно: по этому номеру инженер свяжется с вами.</small>
+              </label>
+              <label class="staff-detail">Источник
+                <select id="ticketSource">
+                  <option>Web</option>
+                  <option>WhatsApp</option>
+                  <option>Telegram</option>
+                  <option>Телефон</option>
+                </select>
+              </label>
+              <label class="full">Кому отправить?<select id="sharedEngineerSelect"><option value="">Любому свободному инженеру</option></select></label><label class="full upload-box">
+                <span>📎 Прикрепить фото / документ</span>
+                <input id="ticketFiles" type="file" multiple>
+                <small id="ticketFilesInfo">Файлы не выбраны</small>
+                <div id="ticketFilesPreview" class="pending-attachments"></div>
+              </label>
+            </div>
+
+            <div class="form-actions">
+              <button type="button" id="aiClassifyBtn" class="btn soft">✦ AI классифицировать</button>
+              <button class="btn primary" type="submit">Создать заявку</button>
+            </div>
+          </form>
+
+          <div class="panel ai-side">
+            <span class="eyebrow">AI PRO</span>
+            <h3>AI ассистент новой заявки</h3>
+            <p>Локально анализирует тему и описание, предлагает категорию, приоритет и подсказку по диагностике.</p>
+            <div class="chips">
+              <span>AI автозаполнение</span><span>Категория</span><span>Приоритет</span>
+            </div>
+            <div id="createAiResult" class="ai-result">Введите тему и описание, затем нажмите «AI классифицировать».</div>
+          </div>
+        </div>
+      </section>
+
+
+      <section id="chatsView" class="view">
+        <div class="messenger-shell messenger-v11">
+          <aside class="chat-list-panel">
+            <div class="chat-list-head">
+              <div>
+                <h3>Чаты</h3>
+                <p>Сотрудники и переписка по заявкам</p>
+              </div>
+              <button id="newDirectChatBtn" class="circle-action" type="button" title="Найти сотрудника">＋</button>
+            </div>
+
+            <div class="chat-mode-tabs">
+              <button id="chatModePeople" class="chat-mode-btn active" type="button" data-chat-mode="people">Сотрудники</button>
+              <button id="chatModeTickets" class="chat-mode-btn" type="button" data-chat-mode="tickets">Заявки</button>
+            </div>
+
+            <div class="chat-search-wrap">
+              <input id="chatSearch" placeholder="ФИО, должность, телефон, отдел, текст…">
+            </div>
+
+            <div class="chat-filters">
+              <select id="chatDepartmentFilter">
+                <option value="">Все отделы</option>
+              </select>
+              <select id="chatRoleFilter">
+                <option value="">Все роли</option>
+                <option value="employee">Сотрудники</option>
+                <option value="engineer">Инженеры</option>
+                <option value="admin">Администраторы</option>
+                <option value="superadmin">Супер-администратор</option>
+              </select>
+              <select id="chatWorkStatusFilter">
+                <option value="">Любой статус</option>
+                <option value="available">Доступен</option>
+                <option value="busy">Занят</option>
+                <option value="away">Отошел</option>
+                <option value="dnd">Не беспокоить</option>
+                <option value="offline">Не в сети</option>
+              </select>
+              <select id="chatListSort">
+                <option value="recent">Новые переписки</option>
+                <option value="old">Старые переписки</option>
+                <option value="name">По ФИО</option>
+              </select>
+              <select id="chatAdminScope" class="super-only">
+                <option value="mine">Мои служебные чаты</option>
+                <option value="audit">Аудит служебных чатов</option>
+              </select>
+            </div>
+
+            <div id="chatList" class="chat-list"></div>
+          </aside>
+
+          <div class="chat-thread-panel">
+            <button id="chatBackToPeople" class="btn soft chat-mobile-back" type="button">Список сотрудников / заявок</button>
+            <div id="chatThreadHeader" class="chat-thread-head">
+              <div>
+                <h3>Выберите сотрудника или заявку</h3>
+                <p>Можно вести отдельную служебную переписку или чат по заявке.</p>
+              </div>
+            </div>
+
+            <div id="chatHistoryTools" class="chat-history-tools hidden">
+              <div class="chat-history-search">
+                <input id="chatMessageSearch" placeholder="Поиск внутри переписки…">
+              </div>
+              <input id="chatDateFilter" type="date" title="Сообщения за конкретный день">
+              <input id="chatMonthFilter" type="month" title="Сообщения за месяц">
+              <select id="chatMessageSort">
+                <option value="asc">Старые → новые</option>
+                <option value="desc">Новые → старые</option>
+              </select>
+              <button id="chatClearHistoryFilters" class="mini-btn" type="button">Сбросить</button>
+            </div>
+
+            <div id="chatMessages" class="chat-messages">
+              <div class="chat-empty">
+                <div class="chat-empty-art">💬</div>
+                <h3>Корпоративный CRM-мессенджер</h3>
+                <p>Найдите сотрудника по ФИО, должности, телефону или отделу и начните переписку.</p>
+              </div>
+            </div>
+
+            <div id="chatComposer" class="chat-composer disabled">
+              <label class="attach-btn attach-btn-wide" title="Прикрепить фото или документ"><span>📎</span><b>Файл</b><input id="chatFiles" type="file" multiple></label>
+              <button class="attach-btn attach-btn-wide voice-compose-btn" type="button" data-voice-target="chatText" title="Надиктовать сообщение"><span>🎙</span><b>Голос</b></button>
+              <div class="chat-compose-main">
+                <textarea id="chatText" rows="1" aria-label="Сообщение" placeholder="Напишите сообщение коллеге…"></textarea>
+                <div id="chatPendingPreview" class="pending-attachments compact"></div>
+              </div>
+              <button id="chatSendBtn" type="button" class="btn primary chat-send-v13">Отправить</button>
+            </div>
+            <div class="chat-privacy-note">
+              Enter — отправить · Shift + Enter — новая строка. Доступ к служебной переписке регулируется политикой организации.
+            </div>
+          </div>
+
+          <aside class="chat-info-panel">
+            <div id="chatInfo">
+              <div class="chat-info-empty">Информация о выбранном сотруднике или заявке появится здесь.</div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="tasksView" class="view">
+        <div class="panel tasks-toolbar">
+          <div>
+            <h3>Задачи</h3>
+            <p>Персональные и сервисные задачи команды</p>
+          </div>
+          <button id="addTaskBtn" class="btn primary">+ Новая задача</button>
+        </div>
+        <div id="taskBoard" class="task-board"></div>
+      </section>
+
+      <section id="contactcenterView" class="view">
+        <div class="panel contact-hero">
+          <div>
+            <span class="eyebrow">OMNICHANNEL</span>
+            <h3>Контакт-центр</h3>
+            <p>Единая точка входа заявок из Web, WhatsApp, Telegram, телефона и e-mail.</p>
+          </div>
+          <span class="tag neutral">HTML-режим</span>
+        </div>
+        <div id="channelGrid" class="channel-grid"></div>
+      </section>
+
+
+      <section id="integrationsView" class="view"><div id="sharedWaPanel" class="panel"></div><div class="legacy-integrations hidden">
+        <div class="integration-hero panel">
+          <div>
+            <span class="eyebrow">CHANNELS & NOTIFICATIONS</span>
+            <h3>Почта и WhatsApp</h3>
+            <p>Подключение каналов коммуникации и автоматических уведомлений по заявкам.</p>
+          </div>
+          <div class="integration-hero-status">
+            <span id="waHeroStatus" class="tag warn">WhatsApp не настроен</span>
+          </div>
+        </div>
+
+        <div class="integration-layout">
+          <div class="panel integration-main-card">
+            <div class="integration-title-row">
+              <div class="provider-logo wa">WA</div>
+              <div>
+                <h3>WhatsApp · GREEN-API</h3>
+                <p>Автоматические уведомления о новых заявках и ответы сотрудникам.</p>
+              </div>
+              <span id="waConnectionStatus" class="tag warn">Не проверено</span>
+            </div>
+
+            <div class="security-note">В режиме браузера токен хранится до закрытия вкладки. В серверном режиме токен GREEN-API хранится на сервере.</div>
+            <div class="wa-incoming-card">
+              <h3>Входящие сообщения → заявки</h3>
+              <p>Новое личное сообщение создаёт заявку и уведомление в CRM. Текст, отправитель и вложения сохраняются в карточке.</p>
+              <label>Режим приёма<select id="waReceiveMode"><option value="browser">В открытом браузере</option><option value="server">Через сервер — круглосуточно</option></select></label>
+              <div id="waBridgeFields" class="hidden">
+                <label>Адрес приёмника<input id="waBridgeUrl" placeholder="https://crm.onco.kz" spellcheck="false"></label>
+                <label>Ключ доступа CRM к приёмнику<input id="waBridgeKey" type="password" autocomplete="off" placeholder="Ключ из настройки приёмника"></label>
+              </div>
+              <p id="waReceiveHelp" class="hint">Приём работает, пока эта вкладка открыта и выполнен вход сотрудника с правом управления интеграциями.</p>
+              <div class="form-actions integration-actions">
+                <button id="waStartReceiving" class="btn primary" type="button">Включить приём</button>
+                <button id="waStopReceiving" class="btn soft" type="button">Остановить</button>
+              </div>
+              <p id="waReceiveStatus" role="status" aria-live="polite">Приём не включён</p>
+            </div>
+
+            <div class="form-grid two">
+              <label>API URL
+                <input id="waApiUrl" value="https://api.green-api.com" spellcheck="false">
+              </label>
+              <label>ID Instance
+                <input id="waIdInstance" value="7103540119" spellcheck="false">
+              </label>
+              <label class="full">API Token Instance
+                <div class="secret-field">
+                  <input id="waApiToken" type="password" placeholder="Вставьте токен GREEN-API" autocomplete="off">
+                  <button id="waToggleToken" class="mini-btn" type="button">Показать</button>
+                </div>
+              </label>
+              <label>Номер для уведомлений CRM
+                <input id="waNotifyNumber" value="+7 777 971 25 55" placeholder="+7 777 000 00 00">
+              </label>
+              <label>Тестовый номер
+                <input id="waTestNumber" value="+7 777 971 25 55" placeholder="+7 777 000 00 00">
+              </label>
+            </div>
+
+            <div class="toggle-list">
+              <label class="toggle-row">
+                <input id="waNotifyNew" type="checkbox" checked>
+                <span><b>Новая заявка</b><small>Отправлять диспетчеру сообщение сразу после регистрации заявки.</small></span>
+              </label>
+              <label class="toggle-row">
+                <input id="waNotifyReply" type="checkbox" checked>
+                <span><b>Ответ сотруднику</b><small>Если администратор или инженер ответил в CRM, продублировать ответ на WhatsApp заявителя.</small></span>
+              </label>
+              <label class="toggle-row">
+                <input id="waNotifyStatus" type="checkbox" checked>
+                <span><b>Изменение статуса</b><small>Отправлять заявителю новый статус заявки.</small></span>
+              </label>
+            </div>
+
+            <div class="form-actions integration-actions">
+              <button id="waSaveBtn" class="btn soft" type="button">Сохранить настройки</button>
+              <button id="waCheckBtn" class="btn soft" type="button">Проверить подключение</button>
+              <button id="waTestBtn" class="btn primary" type="button">Отправить тест</button>
+            </div>
+
+            <div class="notification-preview">
+              <div class="notification-preview-head">Предпросмотр уведомления</div>
+              <pre id="waPreview">🔔 Новая заявка CRM
+
+№ KZ-000022
+Источник: WhatsApp
+Категория: Другое
+Приоритет: Низкий
+Отдел: Поликлиника
+Кабинет: 5
+Телефон: +77076834765
+
+Тема: принтер не печатает
+
+Описание:
+принтер</pre>
+            </div>
+          </div>
+
+          <div class="panel integration-log-card">
+            <div class="panel-head">
+              <div><h3>Журнал отправки</h3><p>Последние события интеграций</p></div>
+              <button id="clearIntegrationLogBtn" class="mini-btn" type="button">Очистить</button>
+            </div>
+            <div id="integrationLog" class="integration-log"></div>
+          </div>
+        </div>
+
+        <div class="mail-section">
+          <div class="panel mail-header-card">
+            <div>
+              <span class="eyebrow">MAIL CONNECTORS</span>
+              <h3>Подключение почты</h3>
+              <p>Google / Gmail, Яндекс Почта, Mail.ru и Microsoft Outlook / 365.</p>
+            </div>
+            <span class="tag neutral">OAuth / IMAP / SMTP</span>
+          </div>
+
+          <div class="mail-grid">
+            <div class="mail-card google">
+              <div class="mail-card-top">
+                <div class="provider-logo google">G</div>
+                <div><h4>Google / Gmail</h4><span id="mailGoogleStatus" class="tag warn">Не подключено</span></div>
+              </div>
+              <label>E-mail<input id="mailGoogleEmail" type="email" placeholder="name@gmail.com"></label>
+              <label>OAuth Client ID<input id="mailGoogleClientId" placeholder="Client ID"></label>
+              <div class="mail-card-actions">
+                <button class="btn soft" type="button" data-mail-help="google">Настроить OAuth</button>
+                <a class="btn soft mail-open-link" href="https://mail.google.com/" target="_blank" rel="noopener">Открыть Gmail</a>
+              </div>
+            </div>
+
+            <div class="mail-card yandex">
+              <div class="mail-card-top">
+                <div class="provider-logo yandex">Я</div>
+                <div><h4>Яндекс Почта</h4><span id="mailYandexStatus" class="tag warn">Не подключено</span></div>
+              </div>
+              <label>E-mail<input id="mailYandexEmail" type="email" placeholder="name@yandex.kz"></label>
+              <label>OAuth Client ID<input id="mailYandexClientId" placeholder="Client ID"></label>
+              <div class="mail-card-actions">
+                <button class="btn soft" type="button" data-mail-help="yandex">Настроить OAuth</button>
+                <a class="btn soft mail-open-link" href="https://mail.yandex.ru/" target="_blank" rel="noopener">Открыть Яндекс</a>
+              </div>
+            </div>
+
+            <div class="mail-card mailru">
+              <div class="mail-card-top">
+                <div class="provider-logo mailru">@</div>
+                <div><h4>Mail.ru</h4><span id="mailMailruStatus" class="tag warn">Не подключено</span></div>
+              </div>
+              <label>E-mail<input id="mailMailruEmail" type="email" placeholder="name@mail.ru"></label>
+              <label>OAuth Client ID<input id="mailMailruClientId" placeholder="Client ID"></label>
+              <div class="mail-card-actions">
+                <button class="btn soft" type="button" data-mail-help="mailru">Настроить OAuth</button>
+                <a class="btn soft mail-open-link" href="https://e.mail.ru/" target="_blank" rel="noopener">Открыть Mail.ru</a>
+              </div>
+            </div>
+            <div class="mail-card outlook">
+              <div class="mail-card-top">
+                <div class="provider-logo outlook">⊞</div>
+                <div><h4>Microsoft Outlook / 365</h4><span id="mailOutlookStatus" class="tag warn">Не подключено</span></div>
+              </div>
+              <label>E-mail<input id="mailOutlookEmail" type="email" placeholder="name@company.kz"></label>
+              <label>Microsoft Entra Client ID<input id="mailOutlookClientId" placeholder="Application (client) ID"></label>
+              <div class="mail-card-actions">
+                <button class="btn soft" type="button" data-mail-help="outlook">Настроить OAuth</button>
+                <a class="btn soft mail-open-link" href="https://outlook.office.com/mail/" target="_blank" rel="noopener">Открыть Outlook</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel mail-runtime-note">
+            <h4>Как будет работать полноценная почта внутри CRM</h4>
+            <p>В чистой версии, открытой как <code>file://index.html</code>, браузер не может напрямую подключаться к IMAP/SMTP и безопасно хранить OAuth refresh-токены. Интерфейс и параметры подключения добавлены; для реального списка входящих/исходящих писем потребуется разместить CRM на HTTPS и подключить небольшой серверный шлюз.</p>
+            <button id="saveMailSettingsBtn" class="btn primary" type="button">Сохранить параметры почты</button>
+          </div>
+        </div>
+      </div></section>
+
+
+      <section id="profileView" class="view"><div id="sharedProfilePanel" class="panel"><h3>Связь с инженером</h3><div class="form-actions"><button id="telegramLinkBtn" class="btn soft" type="button">Подключить Telegram</button><button id="edsBindBtn" class="btn soft" type="button">Привязать мою ЭЦП</button></div><div id="telegramLinkResult"></div><h4>WhatsApp</h4><p>Нажмите кнопку и отправьте полученный код инженеру со своего WhatsApp.</p><button id="sharedLinkBtn" class="btn primary" type="button">Привязать мой WhatsApp</button><div id="sharedLinkResult"></div></div>
+        <div class="profile-cover" id="profileCover">
+          <div class="profile-cover-actions"><button id="profileBackgroundBtn" class="btn glass">Сменить фон</button></div>
+          <div class="profile-identity">
+            <div class="profile-photo-wrap"><div id="profileAvatarLarge" class="profile-avatar-large">ET</div><button id="profilePhotoBtn" class="photo-edit-btn" title="Изменить фото">📷</button><input id="profilePhotoInput" type="file" accept="image/*" class="hidden"></div>
+            <div><h2 id="profileName">Пользователь</h2><p id="profilePosition">Должность</p><div class="profile-status-row"><button id="profileStatusBtn" class="status-pill"><i></i><span>Доступен</span></button><span id="profileDeptBadge" class="tag neutral">Отдел</span></div></div>
+          </div>
+        </div>
+        <div class="profile-layout">
+          <div class="panel profile-card-main"><div class="panel-head"><div><h3>Контактная информация</h3><p>Можно редактировать свою учетную запись</p></div><button id="editProfileBtn" class="btn soft">Редактировать</button></div><div id="profileInfo"></div></div>
+          <div class="panel"><h3>Обо мне</h3><div id="profileAbout" class="profile-text"></div><h3 style="margin-top:18px">Интересы / навыки</h3><div id="profileInterests" class="chips"></div></div>
+          <div class="panel"><h3>Персонализация</h3><label>Тема<select id="profileThemeSelect"><option value="dark">Темная</option><option value="light">Светлая</option><option value="ocean">Океан</option><option value="aurora">Аврора</option><option value="custom">Своя картинка</option></select></label><label class="upload-box">Фоновая картинка<input id="profileBackgroundInput" type="file" accept="image/*"><small>Используется только в вашей учетной записи.</small></label><button id="profileNotificationBtn" class="btn soft wide" type="button">🔔 Разрешить системные уведомления</button></div>
+        </div>
+      </section>
+
+      <section id="directoryView" class="view">
+        <div class="panel directory-panel">
+          <div class="panel-head directory-head">
+            <div><h3>Списки и сотрудники</h3><p>Все зарегистрированные сотрудники, новые учетные записи, подразделения и контакты</p></div>
+            <div class="directory-tools">
+              <input id="directorySearch" class="search small-search" placeholder="Найти по ФИО, отделению или телефону…">
+              <select id="directoryStatusFilter"><option value="">Все статусы</option><option value="active">Активные</option><option value="pending">Новые / ожидают</option></select>
+              <select id="directoryRoleFilter"><option value="">Все роли</option><option value="employee">Сотрудники</option><option value="engineer">Инженеры</option><option value="admin">Администраторы</option><option value="superadmin">Супер-админ</option></select>
+            </div>
+          </div>
+          <div id="directorySummary" class="directory-summary"></div>
+          <div id="directoryGrid" class="directory-grid"></div>
+        </div>
+      </section>
+
+      <section id="departmentsView" class="view">
+        <div class="panel"><div class="panel-head"><div><h3>Подразделения</h3><p>Структура организации, руководители и сотрудники</p></div><button id="addDepartmentBtn" class="btn primary department-manage-only">+ Подразделение</button></div><div id="departmentGrid" class="department-grid"></div></div>
+      </section>
+
+      <section id="analyticsView" class="view">
+        <div id="analyticsMetrics" class="metric-grid analytics-metrics"></div>
+        <div class="analytics-grid"><div class="panel"><div class="panel-head"><div><h3>Загрузка по инженерам</h3><p>Открытые и просроченные заявки</p></div></div><div id="analyticsEngineerBars"></div></div><div class="panel"><div class="panel-head"><div><h3>Категории обращений</h3><p>Распределение заявок</p></div></div><div id="analyticsCategoryBars"></div></div></div>
+      </section>
+
+      <section id="mailboxView" class="view">
+        <div class="mailbox-shell"><aside class="mailbox-folders"><button class="btn primary wide" id="composeMailBtn">+ Написать</button><div class="mailbox-folder active">📥 Входящие <b id="mailInboxCount">3</b></div><div class="mailbox-folder">📤 Отправленные</div><div class="mailbox-folder">⭐ Важные</div><div class="mailbox-accounts" id="mailAccountsMini"></div></aside><div class="mailbox-list"><div class="mailbox-list-head"><h3>Почта</h3><input id="mailSearch" placeholder="Поиск писем"></div><div id="mailList"></div></div><div class="mailbox-reader" id="mailReader"><div class="chat-empty"><div class="chat-empty-art">✉️</div><h3>Выберите письмо</h3><p>Подключенные ящики Google, Яндекс, Mail.ru и Microsoft Outlook будут отображаться в одном окне.</p></div></div></div>
+      </section>
+
+      <section id="securityView" class="view">
+        <div class="panel security-policy"><span class="eyebrow">SECURITY POLICY</span><h2>Политика информационной безопасности CRM</h2><p class="policy-lead">Для АО “Казахский научно-исследовательский институт онкологии и радиологии”. Версия для внедрения IT-System-Solution.</p><div id="securityPolicyContent"></div></div>
+      </section>
+
+      <section id="accountsView" class="view">
+        <div class="panel">
+          <div class="panel-head accounts-head">
+            <div><h3>Учетные записи</h3><p>Все сотрудники доступны для поиска. Роли и индивидуальные права назначает только супер-администратор.</p></div>
+            <button id="addAccountBtn" class="btn primary super-only">+ Создать учетную запись</button>
+          </div>
+          <div class="accounts-toolbar">
+            <input id="accountsSearch" class="search" placeholder="Поиск: ФИО, логин, отдел, телефон, e-mail, должность…">
+            <select id="accountsRoleFilter"><option value="">Все роли</option><option value="employee">Сотрудники</option><option value="engineer">Инженеры</option><option value="admin">Администраторы</option><option value="superadmin">Супер-админ</option></select>
+          </div>
+          <div class="table-wrap"><table>
+            <thead><tr><th>Пользователь</th><th>Организация / отдел</th><th>Роль / права</th><th>Статус</th><th>Контакты</th><th>Действия</th></tr></thead>
+            <tbody id="accountsBody"></tbody>
+          </table></div>
+        </div>
+      </section>
+
+      <section id="engineersView" class="view"><div class="panel engineer-toolbar"><div><h3>Команда Отдела Цифровизации</h3><p>Доступность, загрузка и перенаправление заявок</p></div><div class="legend-status"><span><i class="st available"></i>Доступен</span><span><i class="st busy"></i>Занят</span><span><i class="st away"></i>Отошел</span><span><i class="st dnd"></i>Не беспокоить</span></div></div><div id="engineerCards" class="card-grid"></div></section>
+
+      <section id="reportsView" class="view">
+        <div class="metric-grid" id="reportMetrics"></div>
+        <div class="panel report-filter-panel">
+          <label><input id="reportOverdueOnly" type="checkbox"> Только просроченные заявки</label>
+          <input id="reportEmployeeSearch" class="search small-search" placeholder="Поиск: сотрудник, телефон, инженер…">
+        </div>
+        <div class="panel">
+          <div class="panel-head">
+            <div><h3>Экспорт отчетов</h3><p>PDF через печать браузера, Excel-совместимый CSV</p></div>
+          </div>
+          <div class="report-actions">
+            <button id="printPdfBtn" class="btn primary">Открыть отчет PDF</button>
+            <button id="exportCsvBtn" class="btn soft">Открыть отчет Excel</button>
+          </div>
+          <div id="reportTable" class="table-wrap report-table-watermarked"></div>
+          <div class="report-screen-copyright">
+            <div><b>© <span class="currentYear"></span> Тимченко Евгений Юрьевич</b><br>Разработано <b>IT-System-Solution</b> · evgeniy.tim.91@inbox.ru · www.its24.kz</div>
+            <img src="assets/author-signature.png" alt="Подпись автора">
+          </div>
+        </div>
+      </section>
+
+      <section id="assistantView" class="view">
+        <div class="assistant-layout">
+          <div class="panel">
+            <span class="eyebrow">AI ASSISTANT</span>
+            <h3>Быстрая помощь по заявкам, ответам и диагностике</h3>
+            <p class="muted">Работает локально по правилам и базе типовых рекомендаций.</p>
+            <label>Выберите заявку
+              <select id="aiTicketSelect"></select>
+            </label>
+            <label>Вопрос
+              <textarea id="aiQuestion" rows="7" placeholder="Например: что ответить пользователю / как проверить сеть / как классифицировать проблему"></textarea>
+            </label>
+            <div class="form-actions">
+              <button id="aiAnswerBtn" class="btn primary">Спросить AI</button>
+              <button id="aiUseCurrentBtn" class="btn soft">Взять текущую заявку</button>
+            </div>
+          </div>
+          <div class="panel">
+            <h3>Ответ AI</h3>
+            <div id="aiAnswer" class="ai-answer">Здесь появится рекомендация.</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="settingsView" class="view">
+        <div class="settings-grid">
+          <div class="panel"><span class="eyebrow">TENANT BRANDING</span><h3>Организация</h3><label>Полное название<input id="settingOrgName"></label><label>Короткое название<input id="settingOrgShort"></label><label>Основной IT-отдел<input id="settingDepartmentName"></label><button id="saveBrandingBtn" class="btn primary">Сохранить</button><p class="hint">Логотип и подпись разработчика IT-System-Solution остаются неизменными.</p></div>
+          <div class="panel super-only login-designer-card">
+            <span class="eyebrow">LOGIN PAGE DESIGNER</span>
+            <h3>Начальная страница входа</h3>
+            <p class="muted">Изменяйте изображение, ширину левой части, размер и высоту логотипа. Предпросмотр меняется сразу.</p>
+
+            <div id="loginLivePreview" class="login-live-preview">
+              <div class="login-live-left">
+                <img id="loginLiveImage" src="assets/kazior-logo.png" alt="КазНИИОиР">
+                <div class="login-live-copy">
+                  <span>ОТДЕЛ ЦИФРОВИЗАЦИИ · КАЗНИИОИР</span>
+                  <strong>Единая система заявок для IT-поддержки</strong>
+                  <small id="loginLiveOrg">АО «Казахский научно-исследовательский институт онкологии и радиологии»</small>
+                </div>
+              </div>
+              <div class="login-live-right">
+                <div class="login-live-card">
+                  <div class="login-live-tabs"><b>Вход</b><span>Регистрация</span></div>
+                  <div class="login-live-line"></div>
+                  <div class="login-live-input"></div>
+                  <div class="login-live-input"></div>
+                  <div class="login-live-button">Войти</div>
+                  <small>Разработано IT-System-Solution</small>
+                </div>
+              </div>
+            </div>
+
+            <div class="login-designer-controls">
+              <label>Ширина изображения <b id="loginLogoSizeValue">320 px</b>
+                <input id="settingLoginLogoSize" type="range" min="180" max="620" step="10" value="320">
+              </label>
+              <label>Максимальная высота изображения <b id="loginLogoHeightValue">240 px</b>
+                <input id="settingLoginLogoHeight" type="range" min="100" max="380" step="10" value="240">
+              </label>
+              <label>Ширина левой части <b id="loginLeftWidthValue">58%</b>
+                <input id="settingLoginLeftWidth" type="range" min="46" max="72" step="1" value="58">
+              </label>
+              <label>Смещение изображения по высоте <b id="loginLogoOffsetYValue">0 px</b>
+                <input id="settingLoginLogoOffsetY" type="range" min="-100" max="120" step="5" value="0">
+              </label>
+            </div>
+
+            <label class="upload-box">Загрузить другое изображение с компьютера
+              <input id="settingLoginImageInput" type="file" accept="image/*">
+              <small>PNG/JPG/WebP, рекомендуется до 2,5 МБ. Изображение сохраняется в общей базе CRM.</small>
+            </label>
+            <div class="form-actions" style="justify-content:flex-start">
+              <button id="saveLoginDesignBtn" class="btn primary" type="button">Сохранить оформление</button>
+              <button id="resetLoginDesignBtn" class="btn soft" type="button">Вернуть КазНИИОиР</button>
+            </div>
+          </div>
+          <div class="panel"><h3>Уведомления</h3><label class="toggle-row"><input id="settingSoundEnabled" type="checkbox" checked><span><b>Звук новых заявок</b><small>Мягкий двойной сигнал внутри учетной записи.</small></span></label><label>Контроль SLA каждые<select id="settingSlaCheck"><option value="1">1 минуту</option><option value="5">5 минут</option><option value="10">10 минут</option></select></label><button id="requestSystemNotificationsBtn" class="btn soft" type="button">🔔 Разрешить уведомления Windows / телефона</button><p class="hint">На телефоне лучше установить CRM как PWA. Для push при полностью закрытом приложении понадобится серверный Web Push.</p></div>
+          <div class="panel"><h3>Интеграции</h3><p class="muted">WhatsApp GREEN-API и корпоративная почта настраиваются отдельно.</p><button class="btn primary" type="button" data-jump="integrations">Открыть интеграции</button></div>
+          <div class="panel"><h3>Веб-приложение / PWA</h3><p class="muted">При размещении на HTTPS приложение можно установить на смартфон и рабочий компьютер как PWA.</p><button id="settingsInstallPwaBtn" class="btn soft">Установить приложение</button></div>
+          <div class="panel super-only database-card">
+            <span class="eyebrow">DATABASE CONTROL</span>
+            <h3>Резервная копия общей базы</h3>
+            <p class="muted">Супер-администратор может сделать резервную копию базы, загрузить ранее сохраненную копию или очистить рабочие данные.</p>
+            <div class="database-actions">
+              <button id="exportDbBtn" class="btn primary" type="button">⬇ Выгрузить базу JSON</button>
+              <button id="importDbBtn" class="btn soft" type="button">⬆ Загрузить базу</button>
+              <input id="importDbInput" type="file" accept=".json,application/json" class="hidden">
+              <button id="clearWorkDbBtn" class="btn danger" type="button">Очистить заявки / задачи</button>
+              <button id="resetDemoBtn" class="btn danger" type="button">Сбросить до базы v13</button>
+            </div>
+            <div id="dbStats" class="db-stats"></div>
+          </div>
+          <div class="panel"><h3>Хранение на компьютере или сервере</h3><p class="muted">Заявки, сотрудники, переписка и загруженные вложения сохраняются в общей базе SQLite. Другие компьютеры подключаются к тому же серверу.</p><p class="hint">Скачивайте резервную копию и сохраняйте её на отдельный диск. Ссылки на файлы WhatsApp, которые ещё не удалось загрузить, не являются сохранёнными файлами.</p></div>
+        </div>
+      </section>
+
+      <nav class="mobile-quickbar">
+        <button data-jump="dashboard">⌂<span>Главная</span></button>
+        <button data-jump="create">＋<span>Заявка</span></button>
+        <button data-jump="tickets">▦<span>Заявки</span></button>
+        <button data-jump="tasks">✓<span>Задачи</span></button>
+        <button data-jump="profile">◎<span>Профиль</span></button>
+      </nav>
+      <footer class="footer">
+        <div>
+          © <span class="currentYear"></span> <strong>Тимченко Евгений Юрьевич</strong>
+          · <a href="mailto:evgeniy.tim.91@inbox.ru">evgeniy.tim.91@inbox.ru</a>
+          · <a href="https://www.its24.kz" target="_blank" rel="noopener">www.its24.kz</a>
+          · <a href="tel:+77779712555">+7 777 971 25 55</a>
+          · <a href="https://wa.me/77779712555" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <button id="floatingCreateBtn" class="floating-create" title="Создать заявку">＋</button>
+
+  <div id="ticketModal" class="modal-backdrop hidden">
+    <div class="modal large">
+      <div class="modal-head">
+        <div><span class="eyebrow">TICKET</span><h3 id="ticketModalTitle">Заявка</h3></div>
+        <button class="icon-btn" data-close="ticketModal">✕</button>
+      </div>
+      <div id="ticketModalContent"></div>
+    </div>
+  </div>
+
+  <div id="accountModal" class="modal-backdrop hidden">
+    <div class="modal">
+      <div class="modal-head"><h3>Новая учетная запись</h3><button class="icon-btn" data-close="accountModal">✕</button></div>
+      <form id="accountForm">
+        <div class="form-grid two">
+          <label>ФИО<input id="accName" required></label>
+          <label>Логин<input id="accLogin" required></label>
+          <label>E-mail<input id="accEmail" type="email" required></label>
+          <label>Телефон<input id="accPhone"></label>
+          <label>Организация<input id="accOrg"></label>
+          <label>Отдел<input id="accDept"></label>
+          <label>Роль
+            <select id="accRole">
+              <option value="employee">Сотрудник организации</option>
+              <option value="engineer">Инженер</option>
+              <option value="admin">Администратор</option>
+              <option value="superadmin">Супер-администратор</option>
+            </select>
+          </label>
+          <label>Пароль<input id="accPassword" type="password" minlength="10" autocomplete="new-password" required></label>
+        </div>
+        <div class="form-actions"><button class="btn primary" type="submit">Создать</button></div>
+      </form>
+    </div>
+  </div>
+
+
+  <div id="accountEditModal" class="modal-backdrop hidden">
+    <div class="modal large">
+      <div class="modal-head"><div><span class="eyebrow">ACCESS CONTROL</span><h3>Редактирование учетной записи</h3></div><button class="icon-btn" data-close="accountEditModal">✕</button></div>
+      <form id="accountEditForm">
+        <input id="editAccountId" type="hidden">
+        <div class="account-edit-layout">
+          <div class="panel-like">
+            <h4>Профиль и роль</h4>
+            <div class="form-grid two">
+              <label>ФИО<input id="editAccountName" required></label>
+              <label>Логин<input id="editAccountLogin" required></label>
+              <label>E-mail<input id="editAccountEmail" type="email"></label>
+              <label>Телефон<input id="editAccountPhone"></label>
+              <label>Подразделение<input id="editAccountDept"></label>
+              <label>Должность<input id="editAccountPosition"></label>
+              <label>Роль<select id="editAccountRole"><option value="employee">Сотрудник организации</option><option value="engineer">Инженер</option><option value="admin">Администратор</option><option value="superadmin">Супер-администратор</option></select></label>
+              <label>Статус<select id="editAccountStatus"><option value="active">Активен</option><option value="pending">Ожидает подтверждения</option><option value="blocked">Заблокирован</option></select></label>
+            </div>
+          </div>
+          <div class="panel-like">
+            <h4>Индивидуальные права</h4>
+            <p class="muted">Права дополняют выбранную роль. У супер-администратора полный доступ всегда.</p>
+            <div class="permission-grid">
+              <label class="permission-row"><input id="permViewAllTickets" type="checkbox"><span><b>Все заявки</b><small>Просматривать заявки всех сотрудников.</small></span></label>
+              <label class="permission-row permission-important"><input id="permViewAllChats" type="checkbox"><span><b>Чужие переписки и чаты</b><small>Разрешает видеть сообщения других сотрудников и инженеров. Выдается только супер-администратором.</small></span></label>
+              <label class="permission-row"><input id="permManageTickets" type="checkbox"><span><b>Управлять заявками</b><small>Принимать, менять статус и отвечать.</small></span></label>
+              <label class="permission-row"><input id="permAssignTickets" type="checkbox"><span><b>Назначать инженеров</b><small>Назначать и перенаправлять заявки.</small></span></label>
+              <label class="permission-row"><input id="permManageUsers" type="checkbox"><span><b>Учетные записи</b><small>Редактировать пользователей и роли.</small></span></label>
+              <label class="permission-row"><input id="permManageTasks" type="checkbox"><span><b>Задачи отдела</b><small>Назначать задачи другим сотрудникам.</small></span></label>
+              <label class="permission-row"><input id="permManageDepartments" type="checkbox"><span><b>Управлять подразделениями</b><small>Создавать, переименовывать, удалять подразделения и перемещать сотрудников между ними.</small></span></label>
+              <label class="permission-row"><input id="permViewReports" type="checkbox"><span><b>Отчеты и аналитика</b><small>Просматривать отчеты и просрочки.</small></span></label>
+              <label class="permission-row"><input id="permManageIntegrations" type="checkbox"><span><b>Интеграции</b><small>Почта, WhatsApp и контакт-центр.</small></span></label>
+            </div>
+          </div>
+        </div>
+        <div class="form-actions"><button class="btn primary" type="submit">Сохранить учетную запись</button></div>
+      </form>
+    </div>
+  </div>
+
+  <div id="taskModal" class="modal-backdrop hidden"><div class="modal task-modal-v13"><div class="modal-head"><div><span class="eyebrow">TASK</span><h3 id="taskModalTitle">Новая задача</h3><p id="taskModalMeta" class="muted"></p></div><button class="icon-btn" data-close="taskModal">✕</button></div><form id="taskForm">
+    <input id="taskEditId" type="hidden">
+    <label>Название<div class="voice-field"><input id="taskTitle" required placeholder="Что нужно сделать"><button class="voice-btn" type="button" data-voice-target="taskTitle" aria-label="Заполнить поле голосом" title="Надиктовать задачу">🎙</button></div></label>
+    <div class="form-grid two"><label>Срок<input id="taskDue" type="datetime-local"></label><label>Статус<select id="taskStatus"><option value="todo">Новые</option><option value="progress">В работе</option><option value="done">Выполнено</option></select></label><label id="taskAssigneeWrap" class="full">Исполнитель<div class="assignee-search-wrap"><input id="taskAssigneeSearch" placeholder="Поиск по ФИО, отделу, телефону"><select id="taskAssignee"></select></div></label></div>
+    <label>Описание<div class="voice-field voice-field-textarea"><textarea id="taskDescription" rows="6" placeholder="Подробно опишите задачу"></textarea><button class="voice-btn" type="button" data-voice-target="taskDescription" aria-label="Заполнить поле голосом" title="Продиктовать описание">🎙</button></div></label>
+    <div id="taskPermissionHint" class="task-permission-hint"></div>
+    <div class="form-actions"><button id="taskSaveBtn" class="btn primary" type="submit">Создать задачу</button><button id="taskDeleteBtn" class="btn danger hidden" type="button">Удалить задачу</button></div></form></div></div>
+  <div id="profileEditModal" class="modal-backdrop hidden"><div class="modal"><div class="modal-head"><h3>Редактировать профиль</h3><button class="icon-btn" data-close="profileEditModal">✕</button></div><form id="profileEditForm"><div class="form-grid two"><label>ФИО<input id="editProfileName" required></label><label>Должность<input id="editProfilePosition"></label><label>E-mail<input id="editProfileEmail" type="email"></label><label>Телефон<input id="editProfilePhone"></label><label>Подразделение<input id="editProfileDept"></label><label>Локация<input id="editProfileLocation"></label><label class="full">Обо мне<textarea id="editProfileAbout" rows="4"></textarea></label><label class="full">Интересы / навыки через запятую<input id="editProfileInterests"></label></div><div class="form-actions"><button class="btn primary" type="submit">Сохранить профиль</button></div></form></div></div>
+
+  <div id="personCardModal" class="modal-backdrop hidden">
+    <div class="modal person-card-modal">
+      <div class="modal-head"><div><span class="eyebrow">EMPLOYEE CARD</span><h3 id="personCardTitle">Карточка сотрудника</h3></div><button class="icon-btn" data-close="personCardModal">✕</button></div>
+      <div id="personCardContent"></div>
+    </div>
+  </div>
+
+  <div id="attachmentViewerModal" class="modal-backdrop hidden">
+    <div class="modal attachment-viewer-modal">
+      <div class="modal-head">
+        <div><span class="eyebrow">ATTACHMENT</span><h3 id="attachmentViewerTitle">Вложение</h3></div>
+        <button class="icon-btn" data-close="attachmentViewerModal">✕</button>
+      </div>
+      <div id="attachmentViewerBody" class="attachment-viewer-body"></div>
+      <div class="form-actions"><button id="attachmentViewerDownload" class="btn primary" type="button">Скачать</button></div>
+    </div>
+  </div>
+
+  <div id="reportPreviewModal" class="modal-backdrop hidden">
+    <div class="modal report-preview-modal">
+      <div class="modal-head">
+        <div><span class="eyebrow">REPORT PREVIEW</span><h3>Предпросмотр отчета</h3></div>
+        <button class="icon-btn" data-close="reportPreviewModal">✕</button>
+      </div>
+      <div class="report-preview-toolbar">
+        <button id="reportPreviewPrintBtn" class="btn primary" type="button">Печать / сохранить PDF</button>
+        <button id="reportPreviewExcelBtn" class="btn soft" type="button">Скачать Excel (.xls)</button>
+      </div>
+      <div id="reportPreviewContent" class="report-preview-sheet"></div>
+    </div>
+  </div>
+
+  <script src="whatsapp-core.js"></script>
+  <script src="app.js"></script>
+<script src="ncalayer.js"></script>
+<script src="v16-ui.js"></script>
+<script src="v17-ui.js"></script>
+<script src="v18-ui.js"></script>
+<script src="v19-ui.js"></script>
+</body>
+</html>

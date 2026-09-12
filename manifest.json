@@ -1,0 +1,61 @@
+{
+  "name": "КазНИИОиР — заявки и помощь инженеров",
+  "short_name": "КазIOR CRM",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#07111d",
+  "theme_color": "#20369d",
+  "description": "Service Desk CRM v13: чаты с фиксированным редактором, редактируемые задачи, управление подразделениями, права доступа, SLA и PWA",
+  "icons": [
+    {
+      "src": "assets/kazior-app-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/kazior-app-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Создать заявку",
+      "short_name": "Заявка",
+      "url": "./index.html#create",
+      "icons": [
+        {
+          "src": "assets/kazior-app-icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Мои задачи",
+      "short_name": "Задачи",
+      "url": "./index.html#tasks",
+      "icons": [
+        {
+          "src": "assets/kazior-app-icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Чаты",
+      "short_name": "Чаты",
+      "url": "./index.html#chats",
+      "icons": [
+        {
+          "src": "assets/kazior-app-icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    }
+  ]
+}
